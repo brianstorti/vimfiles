@@ -28,7 +28,7 @@ set number
 set numberwidth=5
 set showtabline=2
 "set winwidth=79
-set shell=bash
+set shell=zsh
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
 set t_ti= t_te=
@@ -109,6 +109,7 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
+imap <c-k> <space>=<space>
 " Can't be bothered to understand ESC vs <c-c> in insert mode
 imap <c-c> <esc>
 " Clear the search buffer when hitting return
@@ -509,10 +510,8 @@ nnoremap <leader>f <esc>:normal mdG=gg`d<cr>
 inoremap \] <esc>:w <enter> <esc> :!ruby % <cr>
 nnoremap <leader>] :w <enter> :!ruby % <cr>
 
-nnoremap ; :
 inoremap ;w <esc>:w
 inoremap ;q <esc>:q
-nnoremap qq :q<cr>
 nnoremap j gj
 nnoremap k gk
 nnoremap <leader>tn :tabnew<cr>
@@ -556,3 +555,5 @@ nnoremap ! *<c-o>
 "edit and source vimrc
 nnoremap <leader>ev :100vs  ~/.vim/vimrc<cr>
 nnoremap <leader>sv :source ~/.vim/vimrc<cr>
+nnoremap <leader>bb :Ack 'debugger'<cr>
+nnoremap <leader>ss :Ack ""<left>
