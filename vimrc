@@ -22,10 +22,10 @@ set hlsearch
 set ignorecase smartcase
 " highlight current line
 set cursorline
-set cmdheight=2
+set cmdheight=1
 set switchbuf=useopen
 set number
-set numberwidth=5
+set numberwidth=1
 set showtabline=2
 "set winwidth=79
 set shell=zsh
@@ -93,25 +93,24 @@ color xoria256
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%) "\ %{fugitive#statusline()}
-:hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
+set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%) "\ %{fugitive#statusline()}
+hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>y "*y
-" Make <leader>' switch between ' and "
-nnoremap <leader>' ""yls<c-r>={'"': "'", "'": '"'}[@"]<cr><esc>
+
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
 imap <c-k> <space>=<space>
-" Can't be bothered to understand ESC vs <c-c> in insert mode
-imap <c-c> <esc>
+
 " Clear the search buffer when hitting return
 nnoremap <CR> :nohlsearch<cr>
 nnoremap <leader><leader> <c-^>
@@ -123,13 +122,6 @@ map <Left> :echo "arrow keys are not allowed"<cr>
 map <Right> :echo "arrow keys are not allowed"<cr>
 map <Up> :echo "arrow keys are not allowed"<cr>
 map <Down> :echo "arrow keys are not allowed"<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" OPEN FILES IN DIRECTORY OF CURRENT FILE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>e :edit %%
-map <leader>v :view %%
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RENAME CURRENT FILE
@@ -145,131 +137,12 @@ endif
 endfunction
 map <leader>n :call RenameFile()<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PROMOTE VARIABLE TO RSPEC LET
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! PromoteToLet()
-:normal! dd
-" :exec '?^\s*it\>'
-:normal! P
-:.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
-:normal ==
-endfunction
-:command! PromoteToLet :call PromoteToLet()
-:map <leader>p :PromoteToLet<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" EXTRACT VARIABLE (SKETCHY
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! ExtractVariable()
-let name = input("Variable name: ")
-if name == ''
-  return
-endif
-" Enter visual mode (not sure why this is needed since we're already in visual mode anyway)
-normal! gv
-
-" Replace selected text with the variable name
-exec "normal c" . name
-" Define the variable on the line above
-exec "normal! O" . name . " = "
-" Paste the original selected text to be the variable value
-normal! $p
-endfunction
-vnoremap <leader>rv :call ExtractVariable()<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" INLINE VARIABLE (SKETCHY
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! InlineVariable()
-" Copy the variable under the cursor into the 'a' register
-:let l:tmp_a = @a
-:normal "ayiw
-" Delete variable and equals sign
-:normal 2daW
-" Delete the expression into the 'b' register
-:let l:tmp_b = @b
-:normal "bd$
-" Delete the remnants of the line
-:normal dd
-" Go to the end of the previous line so we can start our search for the
-" usage of the variable to replace. Doing '0' instead of 'k$' doesn't
-" work; I'm not sure why.
-normal k$
-" Find the next occurence of the variable
-exec '/\<' . @a . '\>'
-" Replace that occurence with the text we yanked
-exec ':.s/\<' . @a . '\>/' . @b
-:let @a = l:tmp_a
-:let @b = l:tmp_b
-endfunction
-nnoremap <leader>ri :call InlineVariable()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPS TO JUMP TO SPECIFIC COMMAND-T TARGETS AND FILES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>gr :topleft :split config/routes.rb<cr>
-function! ShowRoutes()
-" Requires 'scratch' plugin
-:topleft 100 :split __Routes__
-" Make sure Vim doesn't write __Routes__ as a file
-:set buftype=nofile
-" Delete everything
-:normal 1GdG
-" Put routes output in buffer
-:0r! rake -s routes
-" Size window to number of lines (1 plus rake output length)
-:exec ":normal " . line("$") . "_ "
-" Move cursor to bottom
-:normal 1GG
-" Delete empty trailing line
-:normal dd
-endfunction
-map <leader>x :CommandT<cr>
+map <leader>x :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>z :CommandTFlush<cr>\|:CommandT extensions<cr>
-map <leader>gR :call ShowRoutes()<cr>
-map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets/sass<cr>
-map <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
-map <leader>gg :topleft 100 :split Gemfile<cr>
-map <leader>gt :CommandTFlush<cr>\|:CommandTTag<cr>
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SWITCH BETWEEN TEST AND PRODUCTION CODE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! OpenTestAlternate()
-let new_file = AlternateForCurrentFile()
-exec ':e ' . new_file
-endfunction
-function! AlternateForCurrentFile()
-let current_file = expand("%")
-let new_file = current_file
-let in_spec = match(current_file, '^spec/') != -1
-let going_to_spec = !in_spec
-let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1
-if going_to_spec
-  if in_app
-    let new_file = substitute(new_file, '^app/', '', '')
-  end
-  let new_file = substitute(new_file, '\.rb$', '_spec.rb', '')
-  let new_file = 'spec/' . new_file
-else
-  let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
-  let new_file = substitute(new_file, '^spec/', '', '')
-  if in_app
-    let new_file = 'app/' . new_file
-  end
-endif
-return new_file
-endfunction
-nnoremap <leader>. :call OpenTestAlternate()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RUNNING TESTS
@@ -321,21 +194,6 @@ endfunction
 map <leader>tt :call RunTestFile()<cr>
 map <leader>TT :call RunNearestTest()<cr>
 map <leader>aa :call RunTests('')<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" OpenChangedFiles COMMAND
-" Open a split for each dirty file in git
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! OpenChangedFiles()
-only " Close all windows, unless they're modified
-let status = system('git status -s | grep "^ \?\(M\|A\)" | cut -d " " -f 3')
-let filenames = split(status, "\n")
-exec "edit " . filenames[0]
-for filename in filenames[1:]
-  exec "sp " . filename
-endfor
-endfunction
-command! OpenChangedFiles :call OpenChangedFiles()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Searches word under the cursor with ack
@@ -410,13 +268,6 @@ nnoremap <leader>nt :call FindInNERDTree()<cr>
 inoremap \nt <esc>:call FindInNERDTree()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" InsertTime COMMAND
-" Insert the current time
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Setup snippets
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
@@ -448,7 +299,7 @@ catch
   call ExtractSnips("~/vimfiles/snippets/html", "php")
 endtry
 endfunction
-"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Only show cursorline in the current window and in normal mode.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -460,13 +311,11 @@ augroup cline
   au InsertLeave * set cursorline
 augroup END
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use a bar-shaped cursor for insert mode, even through tmux.
+" Use a bar-shaped cursor for insert mode.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Make sure Vim returns to the same line when you reopen a file.
@@ -479,7 +328,6 @@ augroup line_return
         \ endif
 augroup END
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Shut up backup files
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -489,13 +337,11 @@ set directory=/tmp/
 set backup        
 set noswapfile   
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use the mouse to scroll
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set mouse=a
 set ttymouse=xterm2
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Useful maps
@@ -511,13 +357,13 @@ inoremap \] <esc>:w <enter> <esc> :!ruby % <cr>
 nnoremap <leader>] :w <enter> :!ruby % <cr>
 
 inoremap ;w <esc>:w
+inoremap :w <esc>:w
 inoremap ;q <esc>:q
 nnoremap j gj
 nnoremap k gk
 nnoremap <leader>tn :tabnew<cr>
 nnoremap < <c-w><
 nnoremap > <c-w>>
-nnoremap <leader>ss :mksession!<cr>
 
 "copy and paste from clipboard
 vnoremap Y "+y
@@ -535,25 +381,17 @@ nnoremap ,r :s/^#//g<CR>:let @/ = ""<CR>
 "previous tab
 nnoremap gr gT 
 
-"go to tab
-nnoremap g1 1gt
-nnoremap g2 2gt
-nnoremap g3 3gt
-nnoremap g4 4gt
-nnoremap g5 5gt
-nnoremap g6 6gt
-nnoremap g7 7gt
-nnoremap g8 8gt
-nnoremap g9 :tabl<cr> 
-
 "open todo list
 nnoremap <leader>td :100vs ~/.todo.txt<cr> :set wrap<cr>
 
-"use '!' to highlight word under cursor w/o moving the cursor position
+"highlight word under cursor w/o moving the cursor position
 nnoremap ! *<c-o>
 
 "edit and source vimrc
 nnoremap <leader>ev :100vs  ~/.vim/vimrc<cr>
 nnoremap <leader>sv :source ~/.vim/vimrc<cr>
+
+"Ack
 nnoremap <leader>bb :Ack 'debugger'<cr>
 nnoremap <leader>ss :Ack ""<left>
+nnoremap <leader>ls :Ack <up>
