@@ -24,7 +24,7 @@ set ignorecase smartcase
 set cursorline
 set cmdheight=1
 set switchbuf=useopen
-set number
+set relativenumber
 set numberwidth=1
 set showtabline=2
 "set winwidth=79
@@ -208,7 +208,7 @@ function! EscapeAllString(text)
 return substitute(escape(a:text, '*^$.?/\|{[()]}'), '\n', '\\n', 'g')
 endfunction
 
-let g:ackprg="ack -H -i --column --follow"
+let g:ackprg="ack -H -i --nogroup --nocolor --column --follow"
 let g:ackhighlight=1
 vnoremap ,as :<C-u>exec VAckSearch()<CR>
 nnoremap ,as :Ack<CR>
@@ -395,3 +395,6 @@ nnoremap <leader>sv :source ~/.vim/vimrc<cr>
 nnoremap <leader>bb :Ack 'debugger'<cr>
 nnoremap <leader>ss :Ack ""<left>
 nnoremap <leader>ls :Ack <up>
+
+"Bind :Q to :q
+command! Q q 
