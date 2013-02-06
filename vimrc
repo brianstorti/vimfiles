@@ -137,6 +137,16 @@ endif
 endfunction
 map <leader>n :call RenameFile()<cr>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" REMOVE TRAILING WHITESPACES
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! RemoveTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd FileType ruby autocmd BufWritePre <buffer> :call RemoveTrailingWhitespaces()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPS TO JUMP TO SPECIFIC COMMAND-T TARGETS AND FILES
@@ -208,7 +218,7 @@ function! EscapeAllString(text)
 return substitute(escape(a:text, '*^$.?/\|{[()]}'), '\n', '\\n', 'g')
 endfunction
 
-let g:ackprg="ack -H -i --nogroup --nocolor --column --follow"
+let g:ackprg="ag -H -i --nogroup --nocolor --column --follow"
 let g:ackhighlight=1
 vnoremap ,as :<C-u>exec VAckSearch()<CR>
 nnoremap ,as :Ack<CR>
@@ -274,7 +284,7 @@ let g:syntastic_auto_loc_list=0 "don't pop up the Errors list automatically
 let g:syntastic_check_on_open=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_mode_map = { 'mode': 'active',
-      \ 'active_filetypes': ['ruby', 'eruby', 'c', 'cpp', 'cucumber', 'scss', 'css', 'javascript', 'json', 'sh', 'tex', 'html', 'xml', 'yaml'],
+      \ 'active_filetypes': ['ruby', 'eruby', 'c', 'cpp', 'scss', 'css', 'javascript', 'json', 'sh', 'tex', 'html', 'xml', 'yaml'],
       \ 'passive_filetypes': ['puppet'] }
 set statusline+=%{SyntasticStatuslineFlag()}
 
@@ -379,6 +389,8 @@ nnoremap > <c-w>>
 "copy and paste from clipboard
 vnoremap Y "+y
 nnoremap P "+p
+"with this line, 'y' and 'p' play fine with the clipboard
+"set clipboard=unnamed
 
 "list lines with the word under the cursor and ask which one you wanna jump to
 nnoremap ,f [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
@@ -402,10 +414,16 @@ nnoremap ! *<c-o>
 nnoremap <leader>ev :100vs  ~/.vim/vimrc<cr>
 nnoremap <leader>sv :source ~/.vim/vimrc<cr>
 
-"Ack
+"ack
 nnoremap <leader>bb :Ack 'debugger'<cr>
 nnoremap <leader>ss :Ack ""<left>
 nnoremap <leader>ls :Ack <up>
 
-"Bind :Q to :q
+nnoremap <leader>q :q<cr>
+
+"bind :Q to :q
 command! Q q 
+
+nnoremap ,s :SplitjoinSplit<cr>
+nnoremap ,j :SplitjoinJoin<cr>
+
