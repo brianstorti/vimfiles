@@ -87,8 +87,10 @@ augroup END
 " COLOR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256 
-set background=dark
-color xoria256
+set background=light
+syntax enable
+let g:solarized_termcolors=256
+colorscheme solarized
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
@@ -423,7 +425,7 @@ nnoremap <leader>q :q<cr>
 
 "bind :Q to :q
 command! Q q 
+command! W w 
 
 nnoremap ,s :SplitjoinSplit<cr>
 nnoremap ,j :SplitjoinJoin<cr>
-
