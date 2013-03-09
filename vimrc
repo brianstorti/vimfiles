@@ -1,4 +1,22 @@
 call pathogen#runtime_append_all_bundles()
+source ~/.vim/vundle.vim
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Setup snippets
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+source ~/.vim/snippets/support_functions.vim
+autocmd vimenter * call s:SetupSnippets()
+
+function! s:SetupSnippets()
+  if filereadable("./config/environment.rb")
+    call ExtractSnips("~/.vim/snippets/ruby-rails", "ruby")
+    call ExtractSnips("~/.vim/snippets/eruby-rails", "eruby")
+  endif
+  
+  call ExtractSnips("~/.vim/snippets/html", "eruby")
+  call ExtractSnips("~/.vim/snippets/html", "xhtml")
+  call ExtractSnips("~/.vim/snippets/html", "php")
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
@@ -78,9 +96,6 @@ augroup vimrcEx
 
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
-
-  " Indent p tags
-  autocmd FileType html,eruby if g:html_indent_tags !~ '\\|p\>' | let g:html_indent_tags .= '\|p\|li\|dt\|dd' | endif
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -153,8 +168,8 @@ autocmd FileType ruby autocmd BufWritePre <buffer> :call RemoveTrailingWhitespac
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPS TO JUMP TO SPECIFIC COMMAND-T TARGETS AND FILES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>x :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>z :CommandTFlush<cr>\|:CommandT extensions<cr>
+map <leader>x :CtrlP<cr>
+map <leader>z :CtrlP extensions<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RUNNING TESTS
@@ -220,7 +235,7 @@ function! EscapeAllString(text)
 return substitute(escape(a:text, '*^$.?/\|{[()]}'), '\n', '\\n', 'g')
 endfunction
 
-let g:ackprg="ag -H -i --nogroup --nocolor --column --follow"
+let g:ackprg="ack -H -i --nogroup --nocolor --column --follow"
 let g:ackhighlight=1
 vnoremap ,as :<C-u>exec VAckSearch()<CR>
 nnoremap ,as :Ack<CR>
@@ -289,39 +304,6 @@ let g:syntastic_mode_map = { 'mode': 'active',
       \ 'active_filetypes': ['ruby', 'eruby', 'c', 'cpp', 'scss', 'css', 'javascript', 'json', 'sh', 'tex', 'html', 'xml', 'yaml'],
       \ 'passive_filetypes': ['puppet'] }
 set statusline+=%{SyntasticStatuslineFlag()}
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Setup snippets
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-try
-  source ~/.vim/snippets/support_functions.vim
-catch
-  source ~/vimfiles/snippets/support_functions.vim
-endtry
-autocmd vimenter * call s:SetupSnippets()
-function! s:SetupSnippets()
-
-"if we're in a rails env then read in the rails snippets
-if filereadable("./config/environment.rb")
-  try
-    call ExtractSnips("~/.vim/snippets/ruby-rails", "ruby")
-    call ExtractSnips("~/.vim/snippets/eruby-rails", "eruby")
-  catch
-    call ExtractSnips("~/vimfiles/snippets/ruby-rails", "ruby")
-    call ExtractSnips("~/vimfiles/snippets/eruby-rails", "eruby")
-  endtry
-endif
-
-try
-  call ExtractSnips("~/.vim/snippets/html", "eruby")
-  call ExtractSnips("~/.vim/snippets/html", "xhtml")
-  call ExtractSnips("~/.vim/snippets/html", "php")
-catch
-  call ExtractSnips("~/vimfiles/snippets/html", "eruby")
-  call ExtractSnips("~/vimfiles/snippets/html", "xhtml")
-  call ExtractSnips("~/vimfiles/snippets/html", "php")
-endtry
-endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Only show cursorline in the current window and in normal mode.
