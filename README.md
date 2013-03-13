@@ -14,12 +14,3 @@ Usage
 
 #####or by sourcing it from your own ~/.vimrc:   
 ```source ~/.vim/vimrc```
-
-Dependencies
-========
-You will need these dependencies figured out:  
-- Ruby (for the Command-T plugin)
-- Exuberant Ctags (http://ctags.sourceforge.net/)  
-
-In OS X, you can install ctags with homebrew:  
-```brew install ctags```
