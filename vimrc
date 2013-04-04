@@ -101,8 +101,8 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set t_Co=256 
 set background=light
+set t_Co=256
 syntax enable
 let g:solarized_termcolors=256
 colorscheme solarized
@@ -166,8 +166,9 @@ endfun
 autocmd FileType ruby autocmd BufWritePre <buffer> :call RemoveTrailingWhitespaces()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MAPS TO JUMP TO SPECIFIC COMMAND-T TARGETS AND FILES
+" CtrlP CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_follow_symlinks = 1
 map <leader>x :CtrlP<cr>
 map <leader>z :CtrlP extensions<cr>
 
