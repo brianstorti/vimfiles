@@ -31,5 +31,6 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'akitaonrails/snipmate.vim'
 Bundle 'itspriddle/vim-jquery'
 Bundle 'asux/vim-capybara'
-
 Bundle 'L9'
+Bundle 'tomtom/quickfixsigns_vim'
+Bundle "myusuf3/numbers.vim"

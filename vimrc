@@ -101,7 +101,7 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set background=light
+set background=dark
 set t_Co=256
 syntax enable
 let g:solarized_termcolors=256
@@ -114,15 +114,20 @@ set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%) "\ %{fugitive#statu
 hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MISC KEY MAPS
+" SPLITS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>y "*y
-
-" Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
+set splitright
+set splitbelow
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MISC KEY MAPS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>y "*y
 
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
@@ -168,7 +173,25 @@ autocmd FileType ruby autocmd BufWritePre <buffer> :call RemoveTrailingWhitespac
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_switch_buffer = '0'
 let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_abbrev = {
+  \ 'gmode': 't',
+  \ 'abbrevs': [
+    \ { 'pattern': '^a/', 'expanded': 'app/' },
+    \ { 'pattern': '^c/', 'expanded': 'app/controllers/' },
+    \ { 'pattern': '^m/', 'expanded': 'app/models/' },
+    \ { 'pattern': '^v/', 'expanded': 'app/views/' },
+    \ { 'pattern': '^h/', 'expanded': 'app/helpers/' },
+    \ { 'pattern': '^s/', 'expanded': 'spec/' }
+    \ ]
+  \ }
+
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git,log,vendor)$',
+    \ 'file': '\v\.(sql)$'
+\ }
 map <leader>x :CtrlP<cr>
 map <leader>z :CtrlP extensions<cr>
 
@@ -293,7 +316,10 @@ endif
 return {}
 endfunction
 nnoremap <leader>nt :call FindInNERDTree()<cr>
+nnoremap <c-n> :call FindInNERDTree()<cr>
 inoremap \nt <esc>:call FindInNERDTree()<cr>
+
+let NERDTreeAutoDeleteBuffer=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
@@ -362,9 +388,6 @@ nnoremap <leader>f <esc>:normal mdG=gg`d<cr>
 inoremap \] <esc>:w <enter> <esc> :!ruby % <cr>
 nnoremap <leader>] :w <enter> :!ruby % <cr>
 
-inoremap ;w <esc>:w
-inoremap :w <esc>:w
-inoremap ;q <esc>:q
 nnoremap j gj
 nnoremap k gk
 nnoremap <leader>tn :tabnew<cr>
