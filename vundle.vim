@@ -4,6 +4,8 @@ filetype off
 set rtp+=~/.vim/vundle/
 call vundle#rc()
 
+Bundle 'gmarik/vundle'
+Bundle 'L9' 
 Bundle 'AndrewRadev/splitjoin.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'chrisbra/color_highlight'
@@ -25,12 +27,17 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-dispatch'
+Bundle "tpope/vim-fireplace"
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/VisIncr'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'akitaonrails/snipmate.vim'
 Bundle 'itspriddle/vim-jquery'
 Bundle 'asux/vim-capybara'
-Bundle 'L9'
 Bundle 'tomtom/quickfixsigns_vim'
 Bundle "myusuf3/numbers.vim"
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle "honza/vim-snippets"
