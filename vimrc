@@ -61,6 +61,9 @@ set wildmenu
 set listchars=tab:▸\ ,trail:·,nbsp:·
 set list
 
+" indent with 2 spaces
+autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EXECUTE COMMAND PRESERVING THE LOCATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
