@@ -5,8 +5,7 @@ set rtp+=~/.vim/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'L9' 
-Bundle 'AndrewRadev/splitjoin.vim'
+Bundle 'L9'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'chrisbra/color_highlight'
 Bundle 'kana/vim-textobj-user'
@@ -41,3 +40,6 @@ Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
 Bundle "honza/vim-snippets"
+
+" tmux
+Bundle "jgdavey/tslime.vim"

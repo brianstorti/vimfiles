@@ -147,53 +147,45 @@ let g:ctrlp_custom_ignore = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RUNNING TESTS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! RunTests(filename)
-" Write the file and run tests for the given filename
-:w
-:!clear
-if match(a:filename, '\.feature$') != -1
-    exec ":!script/features " . a:filename
-else
-    if filereadable("script/test")
-        exec ":!script/test " . a:filename
-    elseif filereadable("Gemfile")
-        exec ":!bundle exec rspec --color " . a:filename
-    else
-        exec ":!rspec --color " . a:filename
-    end
-end
+function! RunTest(...)
+  let s:command = SelectTestCommand()
+
+  if a:0 " run all file
+    let g:lastTmuxCmd = s:command["command"].s:command["file"]."\n"
+  else
+    let g:lastTmuxCmd = s:command["command"].s:command["file"].s:command["line"]."\n"
+  endif
+
+  call Send_to_Tmux(g:lastTmuxCmd)
 endfunction
 
-function! SetTestFile()
-" Set the spec file that tests will be run for.
-let t:grb_test_file=@%
+function! SelectTestCommand()
+  let s:thisFile = expand("%")
+
+  if match(s:thisFile, "_feature.rb") != -1 || match(s:thisFile, "_spec.rb") != -1
+    return {
+          \ "command": "bundle exec rspec ",
+          \ "file": expand('%'),
+          \ "line": ":".line(".")
+          \ }
+  elseif match(s:thisFile, "_test.rb") != -1
+    return {
+          \ "command": "ruby -I".matchstr(expand("%:h"), ".*test")." ",
+          \ "file": expand('%'),
+          \ "line": " -n /" . GetCurrentTest() . "/"
+          \ }
+  endif
 endfunction
 
-function! RunTestFile(...)
-if a:0
-    let command_suffix = a:1
-else
-    let command_suffix = ""
-endif
-
-" Run the tests for the previously-marked file.
-let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
-if in_test_file
-    call SetTestFile()
-elseif !exists("t:grb_test_file")
-    return
-end
-call RunTests(t:grb_test_file . command_suffix)
+function! GetCurrentTest()
+  let s:line = search("def\ test_", "b")
+  return matchstr(getline(s:line), 'def\s\zstest_.*')
 endfunction
 
-function! RunNearestTest()
-let spec_line_number = line('.')
-call RunTestFile(":" . spec_line_number . " -b")
-endfunction
-
-map <leader>tt :call RunTestFile()<cr>
-map <leader>TT :call RunNearestTest()<cr>
-map <leader>aa :call RunTests('')<cr>
+nmap <leader>rf :call RunTest(1)<CR> " run entire file
+nmap <leader>rl :call RunTest()<CR> " run current line
+nmap <leader>rr :call Send_to_Tmux(g:lastTmuxCmd)<CR> " rerun last spec
+nmap <leader>ra :call Send_to_Tmux("bundle exec rspec\n")<CR> " run all specs
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SEARCHES WORD UNDER CURSOR WITH ACK
@@ -226,7 +218,7 @@ let g:syntastic_auto_loc_list=0 "don't pop up the Errors list automatically
 let g:syntastic_check_on_open=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_mode_map = { 'mode': 'active',
-            \ 'active_filetypes': ['ruby', 'eruby', 'c', 'cpp', 'scss', 'css', 'javascript', 'json', 'sh', 'tex', 'html', 'xml', 'yaml'],
+            \ 'active_filetypes': ['c', 'cpp', 'scss', 'css', 'javascript', 'json', 'sh', 'tex', 'html', 'xml', 'yaml'],
             \ 'passive_filetypes': ['puppet'] }
 set statusline+=%{SyntasticStatuslineFlag()}
 
