@@ -4,6 +4,14 @@ source ~/.vim/vundle.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+scriptencoding utf8
+set encoding=utf8
+set fileencoding=utf8
+set termencoding=utf8
+
+set listchars=tab:▸\ ,trail:·,nbsp:·
+set list
+set nobomb
 set nowrap
 set nocompatible
 " allow unsaved background buffers and remember marks/undo for them
@@ -25,6 +33,7 @@ set ignorecase smartcase
 set cursorline
 set cmdheight=1
 set switchbuf=useopen
+set number
 set relativenumber
 set numberwidth=1
 set showtabline=2
@@ -58,8 +67,6 @@ set wildmode=longest,list
 set wildmenu
 " let mapleader="/\"
 
-set listchars=tab:▸\ ,trail:·,nbsp:·
-set list
 
 " indent with 2 spaces
 autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
@@ -182,10 +189,12 @@ function! GetCurrentTest()
   return matchstr(getline(s:line), 'def\s\zstest_.*')
 endfunction
 
-nmap <leader>rf :call RunTest(1)<CR> " run entire file
-nmap <leader>rl :call RunTest()<CR> " run current line
-nmap <leader>rr :call Send_to_Tmux(g:lastTmuxCmd)<CR> " rerun last spec
-nmap <leader>ra :call Send_to_Tmux("bundle exec rspec\n")<CR> " run all specs
+nmap <leader>rf :call RunTest(1)<CR>
+nmap <leader>rl :call RunTest()<CR>
+nmap <leader>rr :call Send_to_Tmux(g:lastTmuxCmd)<CR>
+nmap <leader>ra :call Send_to_Tmux("bundle exec rspec\n")<CR>
+nmap <leader>rc :call Send_to_Tmux("bundle exec cucumber\n")<CR>
+nmap <leader>rs :call Send_to_Tmux("rspec\n")<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SEARCHES WORD UNDER CURSOR WITH ACK
@@ -339,3 +348,5 @@ endfunction
 
 vmap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
 vmap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
+
+nnoremap ,d Orequire 'pry'; binding.pry<esc>

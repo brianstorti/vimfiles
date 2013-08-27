@@ -3,7 +3,7 @@ tags
 *.sw*
 .VimballRecord
 .netrwhist
-bundle/*
+bundle
 .DS_Store
 *.log
 *.tmp
