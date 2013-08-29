@@ -75,17 +75,14 @@ autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 
 " EXECUTE COMMAND PRESERVING THE LOCATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Preserve(command)
-" Preparation: save last search, and cursor position.
-let _s=@/
-let l = line(".")
-let c = col(".")
-" Do the business:
-execute a:command
-" Clean up: restore previous search history, and cursor position
-let @/=_s
-call cursor(l, c)
-endfunction
+  let _s=@/
 
+  let l:winview = winsaveview()
+  silent execute a:command
+  call winrestview(l:winview)
+
+  let @/=_s
+endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
