@@ -114,11 +114,11 @@ set splitbelow
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ARROW KEYS ARE UNACCEPTABLE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <Left> :echo "arrow keys are not allowed"<cr>
-map <Right> :echo "arrow keys are not allowed"<cr>
-map <Up> :echo "arrow keys are not allowed"<cr>
-map <Down> :echo "arrow keys are not allowed"<cr>
-
+"map <Left> :echo "arrow keys are not allowed"<cr>
+"map <Right> :echo "arrow keys are not allowed"<cr>
+"map <Up> :echo "arrow keys are not allowed"<cr>
+"map <Down> :echo "arrow keys are not allowed"<cr>
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " REMOVE TRAILING WHITESPACES AND BLANK LINES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -145,8 +145,8 @@ let g:ctrlp_abbrev = {
 
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '\v[\/]\.(git,log,vendor)$',
-            \ 'file': '\v\.(sql)$'
             \ }
+noremap <c-s> :exec "CtrlPLine " . bufname('%')<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RUNNING TESTS
@@ -316,6 +316,7 @@ nnoremap ! *<c-o>
 " edit and source vimrc
 nnoremap <leader>ev :100vs  ~/.vim/vimrc<cr>
 nnoremap <leader>sv :source ~/.vim/vimrc<cr>
+
 
 " ack
 nnoremap <leader>bb :Ack --ruby --ignore-dir="bin" 'debugger'<cr>
