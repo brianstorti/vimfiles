@@ -224,7 +224,6 @@ let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_mode_map = { 'mode': 'active',
             \ 'active_filetypes': ['c', 'cpp', 'scss', 'css', 'javascript', 'json', 'sh', 'tex', 'html', 'xml', 'yaml'],
             \ 'passive_filetypes': ['puppet'] }
-set statusline+=%{SyntasticStatuslineFlag()}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ONLY SHOW CURSORLINE IN THE CURRENT WINDOW AND IN NORMAL MODE
