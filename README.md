@@ -1,16 +1,14 @@
 Usage
 ========
 
-**First, make sure you've a backup of your old configurations before proceeding.**  
+#####Clone the repo
+```git clone git://github.com/brianstorti/vimfiles.git ~/.vim```
 
-#####Clone the repo:   
-```git clone git://github.com/brianstorti/vimfiles.git ~/.vim```  
+#####Setup Vundle
+```git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle```
 
-#####Grab the plugin submodules:  
-```cd ~/.vim && git submodule init && git submodule update```  
+#####Make sure vim finds the vimrc file by symlinking it
+```ln -s ~/.vim/vimrc ~/.vimrc```
 
-#####Make sure vim finds the vimrc file by either symlinking it:   
-```ln -s ~/.vim/vimrc ~/.vimrc```  
-
-#####or by sourcing it from your own ~/.vimrc:   
-```source ~/.vim/vimrc```
+#####Open vim and install the plugins by typing
+```:BundleInstall```
