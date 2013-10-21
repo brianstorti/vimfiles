@@ -37,7 +37,6 @@ set number
 set relativenumber
 set numberwidth=1
 set showtabline=2
-set shell=zsh
 
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
@@ -65,8 +64,6 @@ filetype plugin indent on
 set wildmode=longest,list
 " make tab completion for files/buffers act like bash
 set wildmenu
-" let mapleader="/\"
-
 
 " indent with 2 spaces
 autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
@@ -96,6 +93,7 @@ colorscheme solarized
 " STATUS LINE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%) "\ %{fugitive#statusline()}
+
 hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -114,11 +112,11 @@ set splitbelow
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ARROW KEYS ARE UNACCEPTABLE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"map <Left> :echo "arrow keys are not allowed"<cr>
-"map <Right> :echo "arrow keys are not allowed"<cr>
-"map <Up> :echo "arrow keys are not allowed"<cr>
-"map <Down> :echo "arrow keys are not allowed"<cr>
-"
+map <Left> :echo "arrow keys are not allowed"<cr>
+map <Right> :echo "arrow keys are not allowed"<cr>
+map <Up> :echo "arrow keys are not allowed"<cr>
+map <Down> :echo "arrow keys are not allowed"<cr>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " REMOVE TRAILING WHITESPACES AND BLANK LINES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -197,13 +195,13 @@ nmap <leader>rs :call Send_to_Tmux("rspec\n")<CR>
 " SEARCHES WORD UNDER CURSOR WITH ACK
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! VAckSearch()
-let temp = @s
-norm! gv"sy
-return ':Ack "' . EscapeAllString(@s) . '"'
+  let temp = @s
+  norm! gv"sy
+  return ':Ack "' . EscapeAllString(@s) . '"'
 endfunction
 
 function! EscapeAllString(text)
-return substitute(escape(a:text, '*^$.?/\|{[()]}'), '\n', '\\n', 'g')
+  return substitute(escape(a:text, '*^$.?/\|{[()]}'), '\n', '\\n', 'g')
 endfunction
 
 let g:ackprg="ack -H -i --nogroup --nocolor --column --follow --ignore-dir='log'"
@@ -316,7 +314,6 @@ nnoremap ! *<c-o>
 " edit and source vimrc
 nnoremap <leader>ev :100vs  ~/.vim/vimrc<cr>
 nnoremap <leader>sv :source ~/.vim/vimrc<cr>
-
 
 " ack
 nnoremap <leader>bb :Ack --ruby --ignore-dir="bin" 'debugger'<cr>
