@@ -11,9 +11,7 @@ Bundle 'chrisbra/color_highlight'
 Bundle 'kana/vim-textobj-user'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
-Bundle 'rking/ag.vim'
 Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
@@ -25,8 +23,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-dispatch'
-Bundle "tpope/vim-fireplace"
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/VisIncr'
 Bundle 'Lokaltog/vim-powerline'
@@ -40,6 +36,7 @@ Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
 Bundle "honza/vim-snippets"
+Bundle "majutsushi/tagbar"
 
 " tmux
 Bundle "jgdavey/tslime.vim"

@@ -289,7 +289,6 @@ nnoremap <leader>] :w <enter> :!ruby % <cr>
 nnoremap j gj
 nnoremap k gk
 nnoremap <leader>tn :tabnew<cr>
-nnoremap <c-t> :tabnew<cr>
 
 " copy and paste from clipboard
 vnoremap Y "+y
@@ -344,3 +343,4 @@ vmap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
 vmap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 
 nnoremap ,d Orequire 'pry'; binding.pry<esc>
+nnoremap <F2> :TagbarToggle<cr>
