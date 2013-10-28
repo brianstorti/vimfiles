@@ -10,13 +10,12 @@ Boost your productivity in four easy steps.
 `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
 
 3. Make sure vim finds the vimrc file by symlinking it:
-`echo "source ~/.vim/vimrc" >> ~/.vimrc`
+`ln -sf ~/.vim/vimrc ~/.vimrc`
 
-4. Install the vim plugins
-`vim -c BundleInstall`
+4. Install the plugins `vim -c "BundleInstall"`
 
 Or you can just copy this line and you are good to go:
 `git clone git://github.com/brianstorti/vimfiles.git ~/.vim && \
  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle && \
- echo "source ~/.vim/vimrc" >> ~/.vimrc && \
- vim -c BundleInstall`
+ ln -sf ~/.vim/vimrc ~/.vimrc && \
+ vim -c "BundleInstall"`

@@ -13,7 +13,6 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'pangloss/vim-javascript'
-Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-bundler'
@@ -21,22 +20,14 @@ Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'vim-scripts/VisIncr'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'itspriddle/vim-jquery'
-Bundle 'asux/vim-capybara'
 Bundle 'tomtom/quickfixsigns_vim'
-Bundle "myusuf3/numbers.vim"
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle "honza/vim-snippets"
-Bundle "majutsushi/tagbar"
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
+Bundle 'majutsushi/tagbar'
 
 " tmux
-Bundle "jgdavey/tslime.vim"
+Bundle 'jgdavey/tslime.vim'
