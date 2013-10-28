@@ -15,7 +15,9 @@ Boost your productivity in four easy steps.
 4. Install the plugins `vim -c "BundleInstall"`
 
 Or you can just copy this line and you are good to go:
-`git clone git://github.com/brianstorti/vimfiles.git ~/.vim && \
- git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle && \
- ln -sf ~/.vim/vimrc ~/.vimrc && \
- vim -c "BundleInstall"`
+```
+git clone git://github.com/brianstorti/vimfiles.git ~/.vim && \
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle && \
+ln -sf ~/.vim/vimrc ~/.vimrc && \
+vim -c "BundleInstall"
+```
