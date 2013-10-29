@@ -25,9 +25,12 @@ Bundle 'tpope/vim-repeat'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tomtom/quickfixsigns_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
 Bundle 'majutsushi/tagbar'
+
+" snippet
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
 
 " tmux
 Bundle 'jgdavey/tslime.vim'

@@ -1,0 +1,20 @@
+snippet if
+	if [[ ${1} ]]; then
+		${2}
+	fi
+
+snippet ife
+	if [[ ${1} ]]; then
+		${2}
+	else
+		${3}
+	fi
+
+snippet for
+	for ${1} in ${2}
+	do
+		${3}
+	done
+
+snippet ec
+	echo "${1}"

@@ -66,7 +66,18 @@ set wildmode=longest,list
 set wildmenu
 
 " indent with 2 spaces
-autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,sh set ai sw=2 sts=2 et
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SETUP SNIPPETS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+source ~/.vim/snippets/support_functions.vim
+
+let g:snipMate = {}
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['ruby'] = 'ruby,ruby-rails,ruby-rspec'
+let g:snipMate.scope_aliases['eruby'] = 'html'
+let g:snipMate.scope_aliases['javascript'] = 'javascript,javascript-jasmine'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EXECUTE COMMAND PRESERVING THE LOCATION

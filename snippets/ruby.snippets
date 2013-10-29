@@ -1,0 +1,34 @@
+snippet class
+	class ${1:`Snippet_RubyClassNameFromFilename()`}${2}
+		${3}
+	end
+snippet deb
+	debugger;${1}
+snippet defi
+	def initialize${1}
+		${2}
+	end
+snippet defp
+	def ${1:name}${2}
+		${3}
+	end
+	${4:private} :$1
+snippet def
+	def ${1:name}
+		${2}
+	end
+snippet do
+	do
+		${1}
+	end
+snippet dop
+	do |${1:param}|
+		${2}
+	end
+snippet enc
+	# encoding: UTF-8
+
+snippet module
+	module ${1:`Snippet_RubyClassNameFromFilename()`}
+		${2}
+	end
