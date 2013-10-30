@@ -21,3 +21,7 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle && \
 ln -sf ~/.vim/vimrc ~/.vimrc && \
 vim -c "BundleInstall"
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/brianstorti/vimfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
