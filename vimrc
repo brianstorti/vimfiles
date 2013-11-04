@@ -356,3 +356,4 @@ vmap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 
 nnoremap ,d Orequire 'pry'; binding.pry<esc>
 nnoremap <F2> :TagbarToggle<cr>
+nnoremap <C-]> g<C-]>

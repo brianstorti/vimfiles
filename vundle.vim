@@ -27,7 +27,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'tomtom/quickfixsigns_vim'
 Bundle 'majutsushi/tagbar'
 
-" snippet
+" snippets
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
