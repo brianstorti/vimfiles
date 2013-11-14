@@ -9,7 +9,7 @@ set encoding=utf8
 set fileencoding=utf8
 set termencoding=utf8
 
-set listchars=tab:▸\ ,trail:·,nbsp:·
+set listchars=tab:¬\ ,trail:·,nbsp:·
 set list
 set nobomb
 set nowrap
@@ -302,13 +302,6 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <leader>tn :tabnew<cr>
 
-" copy and paste from clipboard
-vnoremap Y "+y
-nnoremap P "+p
-
-" with this line, 'y' and 'p' play fine with the clipboard
-" set clipboard=unnamed
-
 " insert and remove comments in visual and normal mode
 vnoremap ,c :s/^/#/g<CR>:let @/ = ""<CR>
 nnoremap ,c :s/^/#/g<CR>:let @/ = ""<CR>
@@ -331,7 +324,7 @@ nnoremap <leader>ss :Ack ""<left>
 nnoremap <leader>ls :Ack <up>
 
 " really remove the buffer when it's closed
-:cabbrev q bw<cr>
+cabbrev q bw<cr>
 nnoremap <leader>q :bw<cr>
 
 " bind :Q to :q and :W to :w
