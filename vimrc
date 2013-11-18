@@ -10,7 +10,7 @@ set encoding=utf8
 set fileencoding=utf8
 set termencoding=utf8
 
-set listchars=tab:¬\ ,trail:·,nbsp:·
+set listchars=tab:▸\ ,trail:·,nbsp:·
 set list
 set nobomb
 set nowrap
@@ -226,6 +226,7 @@ nnoremap ,as :Ack<CR>
 " NERDTree CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <c-n> :NERDTreeFind<cr>
+nnoremap <f3> :NERDTreeToggle<cr>
 let NERDTreeAutoDeleteBuffer=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
