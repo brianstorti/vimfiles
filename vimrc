@@ -302,12 +302,6 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <leader>tn :tabnew<cr>
 
-" insert and remove comments in visual and normal mode
-vnoremap ,c :s/^/#/g<CR>:let @/ = ""<CR>
-nnoremap ,c :s/^/#/g<CR>:let @/ = ""<CR>
-vnoremap ,r :s/^#//g<CR>:let @/ = ""<CR>
-nnoremap ,r :s/^#//g<CR>:let @/ = ""<CR>
-
 " previous tab
 nnoremap gr gT
 
