@@ -285,8 +285,6 @@ set ttymouse=xterm2
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-imap <c-l> <space>=><space>
-imap <c-k> <space>=<space>
 
 " Clear the search buffer when hitting return
 nnoremap <CR> :nohlsearch<cr>
