@@ -70,7 +70,7 @@ set wildmenu
 autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,sh set ai sw=2 sts=2 et
 
 " indent with 4 spaces in java files
-autocmd Filetype java setlocal tabstop=2
+autocmd FileType java set ai sw=4 sts=4 et
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SETUP SNIPPETS
