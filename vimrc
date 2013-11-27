@@ -68,7 +68,9 @@ set wildmenu
 
 " indent with 2 spaces
 autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,sh set ai sw=2 sts=2 et
-autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+
+" indent with 4 spaces in java files
+autocmd Filetype java setlocal tabstop=2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SETUP SNIPPETS
