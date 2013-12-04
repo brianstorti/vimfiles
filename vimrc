@@ -95,6 +95,7 @@ function! Preserve(command)
 
   let @/=_s
 endfunction
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -285,6 +286,19 @@ set mouse=a
 set ttymouse=xterm2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" USE * AND # IN VISUAL MODE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! s:VSetSearch()
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, '\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+
+vmap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
+vmap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -332,17 +346,7 @@ noremap <leader>f :call Preserve('normal gg=G')<CR>
 
 let g:quickfixsigns_classes=['vcsdiff']
 
-" makes * and # work on visual mode too
-function! s:VSetSearch()
-  let temp = @s
-  norm! gv"sy
-  let @/ = '\V' . substitute(escape(@s, '\'), '\n', '\\n', 'g')
-  let @s = temp
-endfunction
-
-vmap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
-vmap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
-
-nnoremap ,d Orequire 'pry'; binding.pry<esc>
+nnoremap ,dp Orequire 'pry'; binding.pry<esc>
+nnoremap ,db Orequire 'byebug'; byebug<esc>
 nnoremap <F2> :TagbarToggle<cr>
 nnoremap <C-]> g<C-]>
