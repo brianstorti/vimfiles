@@ -21,7 +21,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-commentary'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'tomtom/quickfixsigns_vim'
 Bundle 'majutsushi/tagbar'
 
