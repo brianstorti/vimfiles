@@ -334,7 +334,6 @@ nnoremap <leader>ev :100vs  ~/.vim/vimrc<cr>
 nnoremap <leader>sv :source ~/.vim/vimrc<cr>
 
 " ack
-nnoremap <leader>bb :Ack --ruby --ignore-dir="bin" 'debugger'<cr>
 nnoremap <leader>ss :Ack ""<left>
 nnoremap <leader>ls :Ack <up>
 
@@ -353,5 +352,6 @@ let g:quickfixsigns_classes=['vcsdiff']
 
 nnoremap ,dp Orequire 'pry'; binding.pry<esc>
 nnoremap ,db Orequire 'byebug'; byebug<esc>
+
 nnoremap <F2> :TagbarToggle<cr>
 nnoremap <C-]> g<C-]>
