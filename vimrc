@@ -243,17 +243,6 @@ let g:syntastic_mode_map = { 'mode': 'active',
             \ 'passive_filetypes': ['puppet'] }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ONLY SHOW CURSORLINE IN THE CURRENT WINDOW AND IN NORMAL MODE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup cline
-    au!
-    au WinLeave * set nocursorline
-    au WinEnter * set cursorline
-    au InsertEnter * set nocursorline
-    au InsertLeave * set cursorline
-augroup END
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " USE A BAR-SHAPED CURSOR FOR INSERT MODE.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
