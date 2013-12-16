@@ -315,7 +315,7 @@ nnoremap <leader>tn :tabnew<cr>
 nnoremap gr gT
 
 " highlight word under cursor w/o moving the cursor position
-nnoremap ! *<c-o>
+nnoremap ! *<C-o>
 
 " edit and source vimrc
 nnoremap <leader>ev :100vs  ~/.vim/vimrc<cr>
@@ -334,7 +334,7 @@ command! Q q
 command! W w
 
 " indent file
-noremap <leader>f :call Preserve('normal gg=G')<CR>
+nnoremap <leader>f :call Preserve('normal gg=G')<CR>
 
 let g:quickfixsigns_classes=['vcsdiff']
 
