@@ -343,3 +343,4 @@ nnoremap ,db Orequire 'byebug'; byebug<esc>
 
 nnoremap <F2> :TagbarToggle<cr>
 nnoremap <C-]> g<C-]>
+nnoremap ,r :!pry<cr>
