@@ -10,7 +10,7 @@ set encoding=utf8
 set fileencoding=utf8
 set termencoding=utf8
 
-set listchars=tab:▸\ ,trail:·,nbsp:·
+set listchars=tab:▸\ ,nbsp:·,trail:·
 set list
 set nobomb
 set nowrap
@@ -305,7 +305,7 @@ nnoremap <leader><leader> <c-^>
 inoremap jk <esc>l
 
 " run current file
-nnoremap <leader>] :w <enter> :!ruby % <cr>
+nnoremap <leader>] :w <enter> :!ruby  %<cr>
 
 nnoremap j gj
 nnoremap k gk
@@ -326,8 +326,7 @@ nnoremap <leader>ss :Ack ""<left>
 nnoremap <leader>ls :Ack <up>
 
 " really remove the buffer when it's closed
-cabbrev q bw<cr>
-nnoremap <leader>q :bw<cr>
+nnoremap <leader>q :q<cr>
 
 " bind :Q to :q and :W to :w
 command! Q q
