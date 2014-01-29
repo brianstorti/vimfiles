@@ -315,7 +315,7 @@ nnoremap <leader>tn :tabnew<cr>
 nnoremap gr gT
 
 " highlight word under cursor w/o moving the cursor position
-nnoremap <silent> ! :let stay_star_view = winsaveview()<cr>*:call winrestview(stay_star_view)<cr>
+nnoremap <silent> ! :setl lazyredraw<CR>:let view = winsaveview()<cr>*:call winrestview(view)<cr>:set nolazyredraw<cr>
 
 " edit and source vimrc
 nnoremap <leader>ev :100vs  ~/.vim/vimrc<cr>
