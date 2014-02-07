@@ -135,7 +135,15 @@ map <Down> :echo "arrow keys are not allowed"<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " REMOVE TRAILING WHITESPACES AND BLANK LINES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufWritePre * call Preserve('%s/\s\+$//e')
+function! StripTrailingWhitespace()
+    if &ft =~ 'markdown'
+        return
+    endif
+
+    call Preserve('%s/\s\+$//e')
+endfun
+
+autocmd BufWritePre * call StripTrailingWhitespace()
 autocmd BufWritePre * call Preserve('%s/\v($\n\s*)+%$//e')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
