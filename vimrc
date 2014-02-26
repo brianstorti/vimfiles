@@ -1,4 +1,3 @@
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 source ~/.vim/vundle.vim
@@ -11,34 +10,25 @@ set encoding=utf8
 set fileencoding=utf8
 set termencoding=utf8
 
+set list " display unprintable characters
 set listchars=tab:▸\ ,nbsp:·,trail:·
-set list
-set nobomb
-set nowrap
-set nocompatible
-" allow unsaved background buffers and remember marks/undo for them
-set hidden
-" remember more commands and search history
-set history=10000
-set expandtab
-set tabstop=2
-set shiftwidth=4
-set softtabstop=4
-set autoindent
-set laststatus=2
-set showmatch
-set incsearch
-set hlsearch
-" make searches case-sensitive only if they contain upper-case characters
-set ignorecase smartcase
-" highlight current line
-set cursorline
-set cmdheight=1
-set switchbuf=useopen
-set number
-set relativenumber
-set numberwidth=1
-set showtabline=2
+set nowrap " avoid breaking a line single line into multiple lines
+set nocompatible " make vim not compatible with vi
+set hidden " allow unsaved background buffers and remember marks/undo for them
+set history=100 " remember more commands and search history (default is 20)
+set expandtab " insert spaces instead of tabs
+set tabstop=2 " define how many spaces are added for a tab
+set shiftwidth=2 " number of spaces used for autoindent (<<, >>)
+set laststatus=2 " always shows statusline for every window
+set incsearch " show search result as I type
+set hlsearch " highlight the search results
+set ignorecase smartcase " make searches case-sensitive only if they contain upper-case characters
+set cursorline " highlight current line
+set cmdheight=1 " number of screen lines used for the command-line
+set number " show line numbers
+set relativenumber " show line numbers relative to the current line
+set numberwidth=1 " minimal number of columns to used for the line number
+set showtabline=2 " always displays tabs
 
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
