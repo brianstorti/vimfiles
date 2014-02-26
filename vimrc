@@ -29,33 +29,23 @@ set number " show line numbers
 set relativenumber " show line numbers relative to the current line
 set numberwidth=1 " minimal number of columns to used for the line number
 set showtabline=2 " always displays tabs
+set t_ti= t_te= " doesn't remove vim screen from the view when running external commands (:!ls)
 
-" Prevent Vim from clobbering the scrollback buffer. See
-" http://www.shallowsky.com/linux/noaltscreen.html
-set t_ti= t_te=
-" keep more context when scrolling off the end of a buffer
-set scrolloff=3
 " Store temporary files in a central spot
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-" display incomplete commands
-set showcmd
-" include '?' and '!' in autocomplete
-set iskeyword+=-,?,!
-" Enable highlighting for syntax
-syntax on
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set showcmd " display incomplete commands
+set iskeyword+=-,?,! " include '?' and '!' in autocomplete
+
 " Enable file type detection.
 " Use the default filetype settings, so that mail gets 'tw' set to 72,
-" 'cindent' is on in C files, etc.
 " Also load indent files, to automatically do language-dependent indenting.
 filetype plugin indent on
-" use emacs-style tab completion when selecting files, etc
-set wildmode=longest,list
-" make tab completion for files/buffers act like bash
-set wildmenu
+
+set wildmode=longest,list " use emacs-style tab completion when selecting files, etc
+set wildmenu " make tab completion for files/buffers act like bash
 
 " indent with 2 spaces
 autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,sh set ai sw=2 sts=2 et
@@ -99,8 +89,7 @@ colorscheme solarized
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%) "\ %{fugitive#statusline()}
-hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
+set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SPLITS
@@ -206,9 +195,9 @@ nmap <leader>rc :call Send_to_Tmux("bundle exec cucumber\n")<CR>
 nmap <leader>rs :call Send_to_Tmux("rspec\n")<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SEARCHES WORD UNDER CURSOR WITH ACK
+" SEARCHES WITH ACK
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! VAckSearch()
+function! VisualAckSearch()
   let temp = @s
   norm! gv"sy
   return ':Ack "' . EscapeAllString(@s) . '"'
@@ -220,8 +209,10 @@ endfunction
 
 let g:ackprg="ag -i --nogroup --nocolor --column --follow --ignore-dir='log'"
 let g:ackhighlight=1
-vnoremap ,as :<C-u>exec VAckSearch()<CR>
+vnoremap ,as :<C-u>exec VisualAckSearch()<CR>
 nnoremap ,as :Ack<CR>
+nnoremap <leader>ss :Ack ""<left>
+nnoremap <leader>ls :Ack <up>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree CONFIGURATION
@@ -319,10 +310,6 @@ nnoremap <silent> ! :let view = winsaveview()<cr>*:call winrestview(view)<cr>
 " edit and source vimrc
 nnoremap <leader>ev :100vs  ~/.vim/vimrc<cr>
 nnoremap <leader>sv :source ~/.vim/vimrc<cr>
-
-" ack
-nnoremap <leader>ss :Ack ""<left>
-nnoremap <leader>ls :Ack <up>
 
 nnoremap <leader>q :q<cr>
 
