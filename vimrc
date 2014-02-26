@@ -1,6 +1,7 @@
-call pathogen#runtime_append_all_bundles()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 source ~/.vim/vundle.vim
-runtime macros/matchit.vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
