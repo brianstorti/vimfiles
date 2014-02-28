@@ -111,11 +111,9 @@ map <Down> :echo "arrow keys are not allowed"<cr>
 " REMOVE TRAILING WHITESPACES AND BLANK LINES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! StripTrailingWhitespace()
-    if &ft =~ 'markdown'
-        return
-    endif
-
+  if &ft !~ 'markdown'
     call Preserve('%s/\s\+$//e')
+  endif
 endfun
 
 autocmd BufWritePre * call StripTrailingWhitespace()
