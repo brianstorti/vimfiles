@@ -321,4 +321,4 @@ nnoremap ,db Orequire 'byebug'; byebug<esc>
 nnoremap <F2> :TagbarToggle<cr>
 nnoremap <C-]> g<C-]>
 nnoremap ,r :!pry<cr>
-nnoremap ,mt <c-w>T<cr>
+nnoremap ,mt <c-w>T<cr> " move current buffer to its own tab
