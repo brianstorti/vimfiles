@@ -275,6 +275,18 @@ vmap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 let g:airline_theme="bubblegum"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" DISABLE STANDARD PLUGINS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:loaded_getscriptPlugin=1 " download latest version of vim scripts
+let g:loaded_netrwPlugin=1 " read and write files over a network
+let g:loaded_tarPlugin=1 " tar file explorer
+let g:loaded_2html_plugin=1 " convert to html
+let g:loaded_vimballPlugin=1 " create self-installing Vim-script
+let g:loaded_zipPlugin=1 " zip archive explorer
+let loaded_gzip=1 " reading and writing compressed files
+let loaded_rrhelper=1 " helper function(s) for --remote-wait
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
