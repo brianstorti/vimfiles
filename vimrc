@@ -1,6 +1,7 @@
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 source ~/.vim/vundle.vim
+source ~/.vim/snippets/support_functions.vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
@@ -62,6 +63,17 @@ syntax enable
 let g:solarized_termcolors=256
 colorscheme solarized
 let g:airline_theme="bubblegum"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SNIPPETS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+source ~/.vim/snippets/support_functions.vim
+
+let g:snipMate = {}
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['ruby'] = 'ruby,ruby-rails,ruby-rspec'
+let g:snipMate.scope_aliases['eruby'] = 'html'
+let g:snipMate.scope_aliases['javascript'] = 'javascript,javascript-jasmine'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EXECUTE COMMAND PRESERVING THE LOCATION
