@@ -143,7 +143,7 @@ let g:ctrlp_custom_ignore = {
 noremap <c-s> :exec "CtrlPLine " . bufname('%')<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" RUNNING TESTS
+" RUNNING RSPEC TESTS WITH TMUX
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! RunTest(...)
   let s:command = SelectTestCommand()
