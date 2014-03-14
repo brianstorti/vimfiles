@@ -54,17 +54,6 @@ autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,sh set ai sw
 autocmd FileType java set ai sw=4 sts=4 et
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SETUP SNIPPETS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-source ~/.vim/snippets/support_functions.vim
-
-let g:snipMate = {}
-let g:snipMate.scope_aliases = {}
-let g:snipMate.scope_aliases['ruby'] = 'ruby,ruby-rails,ruby-rspec'
-let g:snipMate.scope_aliases['eruby'] = 'html'
-let g:snipMate.scope_aliases['javascript'] = 'javascript,javascript-jasmine'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EXECUTE COMMAND PRESERVING THE LOCATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Preserve(command)
@@ -324,8 +313,6 @@ command! W w
 
 " indent file
 nnoremap <leader>f :call Preserve('normal gg=G')<CR>
-
-let g:quickfixsigns_classes=['vcsdiff']
 
 nnoremap ,dp Orequire 'pry'; binding.pry<esc>
 nnoremap ,db Orequire 'byebug'; byebug<esc>
