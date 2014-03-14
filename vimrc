@@ -314,7 +314,7 @@ nnoremap <leader>tn :tabnew<cr>
 nnoremap gr gT
 
 " highlight word under cursor w/o moving the cursor position
-nnoremap <silent> ! :let view = winsaveview()<cr>*:call winrestview(view)<cr>
+nnoremap <silent> ! :set hls \| let @/=expand('<cword>')<CR>
 
 " edit and source vimrc
 nnoremap <leader>ev :100vs  ~/.vim/vimrc<cr>
