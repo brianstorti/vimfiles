@@ -110,13 +110,6 @@ autocmd BufWritePre * call StripTrailingWhitespace()
 autocmd BufWritePre * call Preserve('%s/\v($\n\s*)+%$//e')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree CONFIGURATION
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <c-n> :NERDTreeFind<cr>
-nnoremap <f3> :NERDTreeToggle<cr>
-let NERDTreeAutoDeleteBuffer=1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SYNTASTIC CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_auto_loc_list=0 "don't pop up the Errors list automatically
