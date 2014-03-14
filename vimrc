@@ -54,6 +54,16 @@ autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,sh set ai sw
 autocmd FileType java set ai sw=4 sts=4 et
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" COLORS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set background=dark
+set t_Co=256
+syntax enable
+let g:solarized_termcolors=256
+colorscheme solarized
+let g:airline_theme="bubblegum"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EXECUTE COMMAND PRESERVING THE LOCATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Preserve(command)
@@ -99,50 +109,6 @@ endfun
 autocmd BufWritePre * call StripTrailingWhitespace()
 autocmd BufWritePre * call Preserve('%s/\v($\n\s*)+%$//e')
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" RUNNING RSPEC TESTS WITH TMUX
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! RunTest(...)
-  let s:command = SelectTestCommand()
-
-  if a:0 " run all file
-    let g:lastTmuxCmd = s:command["command"].s:command["file"]."\n"
-  else
-    let g:lastTmuxCmd = s:command["command"].s:command["file"].s:command["line"]."\n"
-  endif
-
-  call Send_to_Tmux(g:lastTmuxCmd)
-endfunction
-
-function! SelectTestCommand()
-  let s:thisFile = expand("%")
-
-  if match(s:thisFile, "_feature.rb") != -1 || match(s:thisFile, "_spec.rb") != -1
-    return {
-          \ "command": "bundle exec rspec ",
-          \ "file": expand('%'),
-          \ "line": ":".line(".")
-          \ }
-  elseif match(s:thisFile, "_test.rb") != -1
-    return {
-          \ "command": "ruby -I".matchstr(expand("%:h"), ".*test")." ",
-          \ "file": expand('%'),
-          \ "line": " -n /" . GetCurrentTest() . "/"
-          \ }
-  endif
-endfunction
-
-function! GetCurrentTest()
-  let s:line = search("def\ test_", "b")
-  return matchstr(getline(s:line), 'def\s\zstest_.*')
-endfunction
-
-nmap <leader>rf :call RunTest(1)<CR>
-nmap <leader>rl :call RunTest()<CR>
-nmap <leader>rr :call Send_to_Tmux(g:lastTmuxCmd)<CR>
-nmap <leader>ra :call Send_to_Tmux("bundle exec rspec\n")<CR>
-nmap <leader>rc :call Send_to_Tmux("bundle exec cucumber\n")<CR>
-nmap <leader>rs :call Send_to_Tmux("rspec\n")<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SEARCHES WITH ACK
