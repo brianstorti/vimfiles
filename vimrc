@@ -110,16 +110,6 @@ autocmd BufWritePre * call StripTrailingWhitespace()
 autocmd BufWritePre * call Preserve('%s/\v($\n\s*)+%$//e')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SYNTASTIC CONFIGURATION
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:syntastic_auto_loc_list=0 "don't pop up the Errors list automatically
-let g:syntastic_check_on_open=1
-let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-let g:syntastic_mode_map = { 'mode': 'active',
-            \ 'active_filetypes': ['c', 'cpp', 'scss', 'css', 'javascript', 'json', 'sh', 'tex', 'html', 'yaml'],
-            \ 'passive_filetypes': ['puppet', 'xml'] }
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " USE A BAR-SHAPED CURSOR FOR INSERT MODE.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
