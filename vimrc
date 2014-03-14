@@ -85,6 +85,7 @@ set t_Co=256
 syntax enable
 let g:solarized_termcolors=256
 colorscheme solarized
+let g:airline_theme="bubblegum"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SPLITS
@@ -272,11 +273,6 @@ endfunction
 vnoremap * :<C-u>call VSetSearch()<CR>//<CR>
 vnoremap # :<C-u>call VSetSearch()<CR>??<CR>
 vnoremap <silent> ! :<c-u>set hls \| let @/=VSetSearch()<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" AIRLINE CONFIGURATION
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_theme="bubblegum"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " DISABLE STANDARD PLUGINS
