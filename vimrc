@@ -257,17 +257,21 @@ set mouse=a " works in all modes
 set ttymouse=xterm2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" USE * AND # IN VISUAL MODE
+" USE *, # AND ! IN VISUAL MODE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! s:VSetSearch()
-  let temp = @s
-  norm! gv"sy
-  let @/ = '\V' . substitute(escape(@s, '\'), '\n', '\\n', 'g')
-  let @s = temp
+function! VSetSearch()
+  try
+    let temp = @s
+    norm! gv"sy
+    return substitute(escape(@s, '\'), '\n', '\\n', 'g')
+  finally
+    let @s = temp
+  endtry
 endfunction
 
-vmap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
-vmap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
+vnoremap * :<C-u>call VSetSearch()<CR>//<CR>
+vnoremap # :<C-u>call VSetSearch()<CR>??<CR>
+vnoremap <silent> ! :<c-u>set hls \| let @/=VSetSearch()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " AIRLINE CONFIGURATION
