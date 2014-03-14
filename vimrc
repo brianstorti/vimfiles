@@ -202,10 +202,6 @@ nnoremap <leader>sv :source ~/.vim/vimrc<cr>
 
 nnoremap <leader>q :q<cr>
 
-" bind :Q to :q and :W to :w
-command! Q q
-command! W w
-
 " indent file
 nnoremap <leader>f :call Preserve('normal gg=G')<CR>
 
