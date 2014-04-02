@@ -48,6 +48,9 @@ filetype plugin indent on
 set wildmode=longest,list " use emacs-style tab completion when selecting files, etc
 set wildmenu " make tab completion for files/buffers act like bash
 
+set exrc            " enable per-directory .vimrc files
+set secure          " disable unsafe commands in local .vimrc files
+
 " indent with 2 spaces
 autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,sh set ai sw=2 sts=2 et
 
