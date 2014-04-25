@@ -12,7 +12,7 @@ set fileencoding=utf8
 set termencoding=utf8
 
 set list " display unprintable characters
-set listchars=tab:▸\ ,nbsp:·,trail:·
+set listchars=tab:▸\ ,trail:·,nbsp:·
 set nowrap " avoid breaking a line single line into multiple lines
 set nocompatible " make vim not compatible with vi
 set hidden " allow unsaved background buffers and remember marks/undo for them
