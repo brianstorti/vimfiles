@@ -169,8 +169,8 @@ function! VSetSearch()
   endtry
 endfunction
 
-vnoremap * :<C-u>call VSetSearch()<CR>//<CR>
-vnoremap # :<C-u>call VSetSearch()<CR>??<CR>
+vnoremap * :<c-u>set hls \| let @/=VSetSearch()<CR>//<CR>
+vnoremap # :<c-u>set hls \| let @/=VSetSearch()<CR>??<CR>
 vnoremap <silent> ! :<c-u>set hls \| let @/=VSetSearch()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
