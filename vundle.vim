@@ -29,6 +29,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-fireplace'
 Bundle 'tpope/vim-classpath'
 Bundle 'guns/vim-clojure-static'
+Bundle 'kien/rainbow_parentheses.vim'
 
 " snippets
 Bundle 'MarcWeber/vim-addon-mw-utils'
