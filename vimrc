@@ -227,3 +227,5 @@ nnoremap <F2> :TagbarToggle<cr>
 nnoremap <C-]> g<C-]>
 nnoremap ,r :!pry<cr>
 nnoremap ,mt <c-w>T<cr> " move current buffer to its own tab
+
+vnoremap ,e :Eval<cr> " eval clojure core
