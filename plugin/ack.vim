@@ -8,7 +8,7 @@ function! EscapeAllString(text)
   return substitute(escape(a:text, '*^$.?/\|{[()]}'), '\n', '\\n', 'g')
 endfunction
 
-let g:ackprg="ag -i --nogroup --nocolor --column --follow --ignore-dir='log'"
+let g:ackprg="ag -i --nogroup --nocolor --column --follow --ignore-dir='log' --ignore-dir='bower_components' --ignore-dir='node_modules'"
 let g:ackhighlight=1
 vnoremap ,as :<C-u>exec VisualAckSearch()<CR>
 nnoremap ,as :Ack<CR>
