@@ -12,8 +12,6 @@ let g:ctrlp_abbrev = {
             \ { 'pattern': '^s/', 'expanded': 'spec/' }
             \ ]
             \ }
+let g:ctrlp_custom_ignore = '\v(node_modules|bower_components|log|vendor)'
 
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git,log,vendor)$',
-            \ }
-noremap <c-s> :exec "CtrlPLine " . bufname('%')<CR>
+nnoremap ,s :exec "CtrlPLine " . bufname('%')<CR>
