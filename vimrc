@@ -47,6 +47,9 @@ filetype plugin indent on
 
 set wildmode=longest,list " use emacs-style tab completion when selecting files, etc
 set wildmenu " make tab completion for files/buffers act like bash
+set wildignorecase
+set wildignore+=*.zip,*.gz,*.bz,*.tar
+set wildignore+=*.jpg,*.png,*.gif,*.avi,*.wmv,*.ogg,*.mp3,*.mov
 
 set exrc            " enable per-directory .vimrc files
 set secure          " disable unsafe commands in local .vimrc files
