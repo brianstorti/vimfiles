@@ -14,6 +14,7 @@ let g:ctrlp_abbrev = {
             \ }
 let g:ctrlp_custom_ignore = '\v(node_modules|
                                \bower_components|
+                               \_bower|
                                \log|
                                \vendor|
                                \test_out)'
