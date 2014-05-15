@@ -13,6 +13,7 @@ let g:ackprg="ag -i --nogroup --nocolor --column --follow
               \ --ignore-dir='bower_components'
               \ --ignore-dir='_bower'
               \ --ignore-dir='node_modules'
+              \ --ignore-dir='_site'
               \ --ignore-dir='test_out'"
 
 let g:ackhighlight=1
