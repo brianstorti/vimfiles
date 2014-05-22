@@ -233,3 +233,6 @@ nnoremap ,mt <c-w>T<cr> " move current buffer to its own tab
 
 vnoremap ,e :Eval<cr> " eval clojure core
 nnoremap ,a maggVG
+
+vnoremap ,cb y'>o<esc>p
+vnoremap ,ca y'<O<esc>P
