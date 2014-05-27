@@ -8,6 +8,18 @@ snippet tag
 	<${1:tag}${2}>${0}</$1>
 snippet p
 	<p>${0}</p>
+snippet span
+	<span${1}>${0}</span>
+snippet c
+	class="${0}"
+snippet li
+	<li>${0}</li>
+snippet ul
+	<ul>
+		${0}
+	</ul>
+snippet a
+	<a href="${1}"${2}>${0}</a>
 snippet h1
 	<h1>${0}</h1>
 snippet h2
@@ -25,7 +37,7 @@ snippet tr
 		${0}
 	</tr>
 snippet in
-	<input type="${1}" ${0} />
+	<input type="${1}" ${0}/>
 snippet html
 	<html lang="${1}"${2}>
 		${0}
