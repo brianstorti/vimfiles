@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -d ~/.vim ]; then
+  echo "\033[0;34m~/.vim found. Creating backup for it at '~/.vim.bkp.$$' before proceeding\033[0m"
+  mv ~/.vim ~/.vim.bkp.$$
+fi
+
 echo "\033[0;34mCloning repository\033[0m"
 git clone git://github.com/brianstorti/vimfiles.git ~/.vim
 
