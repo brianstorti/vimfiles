@@ -226,7 +226,7 @@ nnoremap <leader>f :call Preserve('normal gg=G')<CR>
 nnoremap ,dp Orequire 'pry'; binding.pry<esc>
 nnoremap ,db Orequire 'byebug'; byebug<esc>
 
-nnoremap <F2> :TagbarToggle<cr>
+nnoremap <F4> :TagbarToggle<cr>
 nnoremap <C-]> g<C-]>
 nnoremap ,r :!pry<cr>
 nnoremap ,mt <c-w>T<cr> " move current buffer to its own tab
