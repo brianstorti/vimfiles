@@ -18,6 +18,7 @@ let g:ctrlp_custom_ignore = '\v(node_modules|
                                \log|
                                \vendor|
                                \_site|
+                               \generated|
                                \test_out)'
 
 nnoremap ,s :exec "CtrlPLine " . bufname('%')<CR>
