@@ -100,8 +100,8 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-nnoremap < <c-w><
-nnoremap > <c-w>>
+nnoremap < 3<c-w><
+nnoremap > 3<c-w>>
 
 set splitright
 set splitbelow
@@ -235,3 +235,5 @@ nnoremap ,a maggVG
 
 vnoremap ,cb y'>o<esc>p
 vnoremap ,ca y'<O<esc>P
+
+nnoremap ,t :vs ~/.todo<cr>
