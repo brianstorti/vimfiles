@@ -1,7 +1,7 @@
 function! VisualAckSearch()
   let temp = @s
   norm! gv"sy
-  return ':Ack "' . EscapeAllString(@s) . '"'
+  return ':Ack! "' . EscapeAllString(@s) . '"'
 endfunction
 
 function! EscapeAllString(text)
@@ -15,9 +15,10 @@ let g:ackprg="ag -i --nogroup --nocolor --column --follow
               \ --ignore-dir='node_modules'
               \ --ignore-dir='_site'
               \ --ignore-dir='generated'
+              \ --ignore-dir='OisServer'
               \ --ignore-dir='test_out'"
 
 let g:ackhighlight=1
 vnoremap ,as :<C-u>exec VisualAckSearch()<CR>
-nnoremap <leader>ss :Ack ""<left>
-nnoremap <leader>ls :Ack <up>
+nnoremap <leader>ss :Ack! ""<left>
+nnoremap <leader>ls :Ack! <up>

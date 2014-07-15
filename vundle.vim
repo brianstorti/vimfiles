@@ -24,6 +24,8 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'bling/vim-airline'
 Bundle 'tomtom/quickfixsigns_vim'
 Bundle 'majutsushi/tagbar'
+Bundle 'pangloss/vim-javascript'
+Bundle 'terryma/vim-multiple-cursors'
 
 " clojure
 Bundle 'tpope/vim-fireplace'
