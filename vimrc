@@ -230,10 +230,14 @@ nnoremap <C-]> g<C-]>
 nnoremap ,r :!pry<cr>
 nnoremap ,mt <c-w>T<cr> " move current buffer to its own tab
 
-vnoremap ,e :Eval<cr> " eval clojure core
+" eval clojure code
+vnoremap ,e :Eval<cr>
+nnoremap ,e :Eval<cr>
 nnoremap ,a maggVG
 
 vnoremap ,cb y'>o<esc>p
 vnoremap ,ca y'<O<esc>P
 
 nnoremap ,t :vs ~/.todo<cr>
+inoremap <c-b> <left>
+inoremap <c-f> <right>
