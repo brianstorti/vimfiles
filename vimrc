@@ -12,7 +12,7 @@ set fileencoding=utf8
 set termencoding=utf8
 
 set list " display unprintable characters
-set listchars=tab:▸\ ,trail:·,nbsp:·
+set listchars=tab:▸\ ,trail:·
 set nowrap " avoid breaking a line single line into multiple lines
 set nocompatible " make vim not compatible with vi
 set hidden " allow unsaved background buffers and remember marks/undo for them
@@ -58,6 +58,8 @@ autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,sh set ai sw
 
 " indent with 4 spaces in java files
 autocmd FileType java set ai sw=4 sts=4 et
+
+autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
