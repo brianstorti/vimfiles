@@ -243,3 +243,5 @@ vnoremap ,ca y'<O<esc>P
 nnoremap ,t :vs ~/.todo<cr>
 inoremap <c-b> <left>
 inoremap <c-f> <right>
+
+nnoremap s :execute "normal! f" . nr2char(getchar()) . "l"<cr>
