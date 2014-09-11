@@ -245,3 +245,5 @@ inoremap <c-b> <left>
 inoremap <c-f> <right>
 
 nnoremap s :execute "normal! f" . nr2char(getchar()) . "l"<cr>
+inoremap (( ()<esc>i
+inoremap [[ []<esc>i
