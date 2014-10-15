@@ -235,6 +235,7 @@ nnoremap ,mt <c-w>T<cr> " move current buffer to its own tab
 " eval clojure code
 vnoremap ,e :Eval<cr>
 nnoremap ,e :Eval<cr>
+
 nnoremap ,a maggVG
 
 vnoremap ,cb y'>o<esc>p
@@ -244,6 +245,7 @@ nnoremap ,t :vs ~/.todo<cr>
 inoremap <c-b> <left>
 inoremap <c-f> <right>
 
-nnoremap s :execute "normal! f" . nr2char(getchar()) . "l"<cr>
 inoremap (( ()<esc>i
 inoremap [[ []<esc>i
+inoremap {{ {}<esc>i
+inoremap '' ''<esc>i

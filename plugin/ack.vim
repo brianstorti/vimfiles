@@ -8,7 +8,7 @@ function! EscapeAllString(text)
   return substitute(escape(a:text, '*^$.?/\|{[()]}'), '\n', '\\n', 'g')
 endfunction
 
-let g:ackprg="ag -i --nogroup --nocolor --column --follow
+let g:ackprg="ag --nogroup --nocolor --column --follow
               \ --ignore-dir='log'
               \ --ignore-dir='bower_components'
               \ --ignore-dir='_bower'
