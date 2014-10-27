@@ -1,4 +1,5 @@
 set rtp+=~/.vim/bundle/vundle/
+runtime macros/matchit.vim
 call vundle#rc()
 source ~/.vim/vundle.vim
 source ~/.vim/snippets/support_functions.vim
