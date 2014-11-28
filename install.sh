@@ -1,18 +1,35 @@
 #!/bin/bash
 
+print_message() {
+  echo "\033[1;32m"$1"\033[00m";
+}
+
+print_warning() {
+  echo "\033[1;33m"$1"\033[00m";
+}
+
+print_error() {
+  echo "\033[1;31m"$1"\033[00m";
+}
+
 if [ -d ~/.vim ]; then
-  echo "\033[0;34m~/.vim found. Creating backup for it at '~/.vim.bkp.$$' before proceeding\033[0m"
+  print_warning "~/.vim found. Creating a backup for it at '~/.vim.bkp.$$' before proceeding."
   mv ~/.vim ~/.vim.bkp.$$
 fi
 
-echo "\033[0;34mCloning repository\033[0m"
+print_message "Cloning repository."
 git clone git://github.com/brianstorti/vimfiles.git ~/.vim
 
-echo "\033[0;34mInstalling vundle\033[0m"
+print_message "Installing Vundle."
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
-echo "\033[0;34mLinking .vimrc\033[0m"
+if [ -e ~/.vimrc ]; then
+  print_warning "~/.vimrc found. Creating a backup for it at  '~/.vimrc.bkp.$$' before proceeding."
+  mv ~/.vimrc ~/.vimrc.bkp.$$
+fi
+
+print_message "Linking .vimrc"
 ln -sf ~/.vim/vimrc ~/.vimrc
 
-echo "\033[0;34mInstalling plugins\033[0m"
+print_message "Installing plugins."
 vim -c "BundleInstall"
