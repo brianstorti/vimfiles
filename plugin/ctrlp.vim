@@ -19,6 +19,7 @@ let g:ctrlp_custom_ignore = '\v(node_modules|
                                \vendor|
                                \_site|
                                \generated|
+                               \dist|
                                \\.class|
                                \test_out)'
 
