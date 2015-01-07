@@ -62,6 +62,9 @@ autocmd FileType java set ai sw=4 sts=4 et
 
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
 
+" spell check markdown files
+autocmd FileType markdown,gitcommit setlocal spell
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -70,6 +73,8 @@ set t_Co=256
 syntax enable
 let g:solarized_termcolors=256
 colorscheme solarized
+
+hi SpellBad cterm=bold ctermbg=red ctermfg=white
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SNIPPETS
