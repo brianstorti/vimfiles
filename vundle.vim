@@ -27,6 +27,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'takac/vim-hardtime'
+Bundle 'sunaku/vim-ruby-minitest'
 
 " clojure
 Bundle 'tpope/vim-fireplace'
