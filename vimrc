@@ -254,7 +254,6 @@ inoremap <c-f> <right>
 inoremap (( ()<esc>i
 inoremap [[ []<esc>i
 inoremap {{ {}<esc>i
-inoremap \|\| \|\|<esc>i
 inoremap '' ''<esc>i
 inoremap "" ""<esc>i
 
