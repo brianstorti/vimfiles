@@ -163,8 +163,8 @@ set noswapfile
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " USE THE MOUSE TO SCROLL
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set mouse=a " works in all modes
-set ttymouse=xterm2
+" set mouse=a " works in all modes
+" set ttymouse=xterm2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " USE *, # AND ! IN VISUAL MODE
