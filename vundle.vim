@@ -28,6 +28,7 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'takac/vim-hardtime'
 Bundle 'sunaku/vim-ruby-minitest'
+Bundle 'rizzatti/dash.vim'
 
 " clojure
 Bundle 'tpope/vim-fireplace'
