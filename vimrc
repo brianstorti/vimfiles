@@ -258,4 +258,4 @@ inoremap '' ''<esc>i
 inoremap "" ""<esc>i
 
 nnoremap ,fd /\(\<\w\+\>\)\_s*\1<cr>
-nnoremap ,r :!sh ~/reload-chrome<cr>
+nnoremap ,r :!sh ~/.vim/custom-scripts/reload-chrome<cr> | redraw
