@@ -33,6 +33,7 @@ set numberwidth=1 " minimal number of columns to used for the line number
 set showtabline=2 " always displays tabs
 set t_ti= t_te= " doesn't remove vim screen from the view when running external commands (:!ls)
 set completefunc=syntaxcomplete#Complete " specifies a function to be used for Insert mode completion with CTRL-X CTRL-U.
+set ruler " show line and column numbers in the status bar
 
 " Store temporary files in a central spot
 set backup
@@ -257,5 +258,13 @@ inoremap {{ {}<esc>i
 inoremap '' ''<esc>i
 inoremap "" ""<esc>i
 
+" finds duplicate words
 nnoremap ,fd /\(\<\w\+\>\)\_s*\1<cr>
+
+" reloads the active chrome tab
 nnoremap ,r :!sh ~/.vim/custom-scripts/reload-chrome<cr> | redraw
+
+" Moves selected lines up and down with <c-{j,k}>
+" '> is the last line of the visual selection
+vnoremap <c-j> :m'>+1<cr>gv=gv
+vnoremap <c-k> :m-2<cr>gv=gv
