@@ -5,4 +5,7 @@ snippet end
 snippet er
 	<% ${0} %>
 snippet lt
-	<%= link_to ${0:name} %>
+	<%= link_to '${1:description}', ${0:path} %>
+snippet ff
+	<%= form_for ${0:model} do |f| %>
+	<% end %>
