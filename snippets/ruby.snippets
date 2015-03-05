@@ -39,3 +39,9 @@ snippet module
 	module ${1:`Snippet_RubyClassNameFromFilename()`}
 		${0}
 	end
+snippet req
+	require '${0}'
+snippet reqr
+	require_relative '${0}'
+snippet ae
+	assert_equal ${1:expected}, ${0:actual}
