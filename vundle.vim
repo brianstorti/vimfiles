@@ -33,6 +33,7 @@ Bundle 'tpope/vim-fireplace'
 Bundle 'tpope/vim-classpath'
 Bundle 'guns/vim-clojure-static'
 Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'tpope/vim-leiningen'
 
 " snippets
 Bundle 'MarcWeber/vim-addon-mw-utils'
