@@ -24,7 +24,6 @@ Bundle 'majutsushi/tagbar'
 Bundle 'pangloss/vim-javascript'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'plasticboy/vim-markdown'
-Bundle 'takac/vim-hardtime'
 Bundle 'sunaku/vim-ruby-minitest'
 Bundle 'rizzatti/dash.vim'
 
