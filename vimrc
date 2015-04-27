@@ -248,7 +248,7 @@ nnoremap ,a maggVG
 vnoremap ,cb y'>o<esc>p
 vnoremap ,ca y'<O<esc>P
 
-nnoremap ,t :vs ~/.todo<cr>
+nnoremap ,t :vs ~/Dropbox/.todo<cr>
 inoremap <c-b> <left>
 inoremap <c-f> <right>
 
