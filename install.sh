@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 print_message() {
-  echo "\033[1;32m"$1"\033[00m";
+  echo -e "\033[1;32m"$1"\033[00m";
 }
 
 print_warning() {
-  echo "\033[1;33m"$1"\033[00m";
+  echo -e "\033[1;33m"$1"\033[00m";
 }
 
 print_error() {
-  echo "\033[1;31m"$1"\033[00m";
+  echo -e "\033[1;31m"$1"\033[00m";
 }
 
 if ! type git > /dev/null 2>&1; then
