@@ -45,3 +45,9 @@ snippet reqr
 	require_relative '${0}'
 snippet ae
 	assert_equal ${1:expected}, ${0:actual}
+snippet minitest
+	require 'minitest/autorun'
+
+	class ${1:`Snippet_RubyClassNameFromFilename()`} < Minitest::Test
+		${0}
+	end
