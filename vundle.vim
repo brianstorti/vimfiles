@@ -41,3 +41,5 @@ Bundle 'garbas/vim-snipmate'
 
 " tmux
 Bundle 'jgdavey/tslime.vim'
+
+Bundle 'elixir-lang/vim-elixir'
