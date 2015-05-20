@@ -1,1 +1,1 @@
-nnoremap ,d :Dash<cr>
+nnoremap ,dd :Dash<cr>
