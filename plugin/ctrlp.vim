@@ -23,6 +23,7 @@ let g:ctrlp_custom_ignore = '\v(node_modules|
                                \dist|
                                \\.class|
                                \tmp|
+                               \\.git|
                                \test_out)'
 
 nnoremap ,s :exec "CtrlPLine " . bufname('%')<CR>
