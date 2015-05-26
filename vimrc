@@ -210,7 +210,8 @@ nnoremap <leader><leader> <c-^>
 inoremap jk <esc>l
 
 " run current file
-nnoremap <leader>] :w <enter> :!ruby  %<cr>
+autocmd FileType elixir nnoremap ,1 :w <enter> :!elixir %<cr>
+autocmd FileType ruby   nnoremap ,1 :w <enter> :!ruby %<cr>
 
 nnoremap j gj
 nnoremap k gk
@@ -257,6 +258,7 @@ inoremap [[ []<esc>i
 inoremap {{ {}<esc>i
 inoremap '' ''<esc>i
 inoremap "" ""<esc>i
+inoremap `` ``<esc>i
 
 " finds duplicate words
 nnoremap ,fd /\(\<\w\+\>\)\_s*\1<cr>
