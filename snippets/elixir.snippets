@@ -6,6 +6,8 @@ snippet def
 	def ${1} do
 		${0}
 	end
+snippet defl
+	def ${1}, do: ${0}
 snippet defp
 	defp ${1} do
 		${0}
@@ -24,3 +26,7 @@ snippet test
 	end
 snippet okk
 	{:ok, ${1}}${0}
+snippet p
+	IO.puts ${0}
+snippet join
+	|> Enum.join(",")
