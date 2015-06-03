@@ -28,5 +28,17 @@ snippet okk
 	{:ok, ${1}}${0}
 snippet p
 	IO.puts ${0}
+snippet i
+	IO.inspect ${0}
 snippet join
 	|> Enum.join(",")
+snippet if
+	if ${1} do
+		${0}
+	end
+snippet ife
+	if ${1} do
+		${2}
+	else
+		${0}
+	end
