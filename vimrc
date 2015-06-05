@@ -213,6 +213,9 @@ inoremap jk <esc>l
 autocmd FileType elixir nnoremap ,1 :w <enter> :!elixir %<cr>
 autocmd FileType ruby   nnoremap ,1 :w <enter> :!ruby %<cr>
 
+autocmd FileType ruby nnoremap <leader>tt :!rake test<cr>
+autocmd FileType elixir nnoremap <leader>tt :!mix test<cr>
+
 nnoremap j gj
 nnoremap k gk
 nnoremap <leader>tn :tabnew<cr>
@@ -270,3 +273,9 @@ nnoremap ,r :!sh ~/.vim/custom-scripts/reload-chrome<cr> | redraw
 " '> is the last line of the visual selection
 vnoremap <c-j> :m'>+1<cr>gv=gv
 vnoremap <c-k> :m-2<cr>gv=gv
+
+function! RunNearestTest()
+  execute "!m %:" . line('.')
+endfunction
+
+nnoremap <leader>rt :call RunNearestTest()<cr>
