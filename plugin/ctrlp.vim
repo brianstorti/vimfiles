@@ -24,6 +24,7 @@ let g:ctrlp_custom_ignore = '\v(node_modules|
                                \\.class|
                                \tmp|
                                \\.git|
+                               \\.beam|
                                \test_out)'
 
 nnoremap ,s :exec "CtrlPLine " . bufname('%')<CR>
