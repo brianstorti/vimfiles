@@ -67,6 +67,8 @@ autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
 " spell check markdown files
 autocmd FileType markdown,gitcommit setlocal spell
 
+let &colorcolumn="80,".join(range(120,999),",")
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -235,7 +237,7 @@ nnoremap <leader>q :q<cr>
 " indent file
 nnoremap <leader>f :call Preserve('normal gg=G')<CR>
 
-nnoremap ,dp Orequire 'pry'; binding.pry<esc>
+nnoremap ,dp Obinding.pry<esc>
 nnoremap ,db Orequire 'byebug'; byebug<esc>
 
 nnoremap <F4> :TagbarToggle<cr>
