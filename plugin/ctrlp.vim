@@ -22,7 +22,6 @@ let g:ctrlp_custom_ignore = '\v(node_modules|
                                \generated|
                                \dist|
                                \\.class|
-                               \tmp|
                                \\.git|
                                \\.beam|
                                \test_out)'
