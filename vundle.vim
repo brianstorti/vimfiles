@@ -43,3 +43,4 @@ Bundle 'garbas/vim-snipmate'
 Bundle 'jgdavey/tslime.vim'
 
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'kchmck/vim-coffee-script'
