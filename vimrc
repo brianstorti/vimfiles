@@ -95,13 +95,13 @@ let g:snipMate.scope_aliases['javascript'] = 'javascript,javascript-jasmine,hand
 " EXECUTE COMMAND PRESERVING THE LOCATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Preserve(command)
-  let _s=@/
+let _s=@/
 
-  let l:winview = winsaveview()
-  silent execute a:command
-  call winrestview(l:winview)
+let l:winview = winsaveview()
+silent execute a:command
+call winrestview(l:winview)
 
-  let @/=_s
+let @/=_s
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -129,9 +129,9 @@ map <Down> :echo "arrow keys are not allowed"<cr>
 " REMOVE TRAILING WHITESPACES AND BLANK LINES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! StripTrailingWhitespace()
-  if &ft !~ 'mkd'
-    call Preserve('%s/\s\+$//e')
-  endif
+if &ft !~ 'mkd'
+  call Preserve('%s/\s\+$//e')
+endif
 endfun
 
 autocmd BufWritePre * call StripTrailingWhitespace()
@@ -147,11 +147,11 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 " MAKE SURE VIM RETURNS TO THE SAME LINE WHEN YOU REOPEN A FILE.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup line_return
-    au!
-    au BufReadPost *
-                \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                \     execute 'normal! g`"zvzz' |
-                \ endif
+  au!
+  au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -173,13 +173,13 @@ set noswapfile
 " USE *, # AND ! IN VISUAL MODE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! VSetSearch()
-  try
-    let temp = @s
-    norm! gv"sy
-    return substitute(escape(@s, '\'), '\n', '\\n', 'g')
-  finally
-    let @s = temp
-  endtry
+try
+  let temp = @s
+  norm! gv"sy
+  return substitute(escape(@s, '\'), '\n', '\\n', 'g')
+finally
+  let @s = temp
+endtry
 endfunction
 
 vnoremap * :<c-u>set hls \| let @/=VSetSearch()<CR>//<CR>
@@ -214,6 +214,7 @@ inoremap jk <esc>l
 " run current file
 autocmd FileType elixir nnoremap ,1 :w <enter> :!elixir %<cr>
 autocmd FileType ruby   nnoremap ,1 :w <enter> :!ruby %<cr>
+autocmd FileType ruby   nnoremap ,2 :w <enter> :!rspec %<cr>
 
 autocmd FileType ruby nnoremap <leader>tt :!rake test<cr>
 autocmd FileType elixir nnoremap <leader>tt :!mix test<cr>
@@ -242,15 +243,16 @@ nnoremap ,db Orequire 'byebug'; byebug<esc>
 
 nnoremap <F4> :TagbarToggle<cr>
 nnoremap <C-]> g<C-]>
-nnoremap ,r :!pry<cr>
 nnoremap ,mt <c-w>T<cr> " move current buffer to its own tab
 
 " eval clojure code
 vnoremap ,e :Eval<cr>
 nnoremap ,e :Eval<cr>
 
+" select entire buffer
 nnoremap ,a maggVG
 
+" duplicate selected text [b]ellow or [a]bove
 vnoremap ,cb y'>o<esc>p
 vnoremap ,ca y'<O<esc>P
 
@@ -258,6 +260,7 @@ nnoremap ,t :vs ~/Dropbox/.todo<cr>
 inoremap <c-b> <left>
 inoremap <c-f> <right>
 
+" type (( to have (<cursor>)
 inoremap (( ()<esc>i
 inoremap [[ []<esc>i
 inoremap {{ {}<esc>i
@@ -277,7 +280,19 @@ vnoremap <c-j> :m'>+1<cr>gv=gv
 vnoremap <c-k> :m-2<cr>gv=gv
 
 function! RunNearestTest()
-  execute "!m %:" . line('.')
+  execute "!rspec %:" . line('.')
 endfunction
 
 nnoremap <leader>rt :call RunNearestTest()<cr>
+
+" close tab
+nnoremap ,cc :tabc<cr>
+
+nnoremap ,s :AV<cr>
+nnoremap <silent> ,gf :vertical botright wincmd f<cr>
+
+" move horizontal to vertical split
+nnoremap ,v <c-w>t<c-w>H
+
+" Copy github link to current line
+nnoremap ,b <S-v>:Gbrowse!<cr>
