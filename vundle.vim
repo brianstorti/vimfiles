@@ -29,6 +29,7 @@ Bundle 'rizzatti/dash.vim'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'lambdatoast/elm.vim'
 Bundle 'janko-m/vim-test'
+Bundle 'benmills/vimux'
 
 " clojure
 Bundle 'tpope/vim-fireplace'
