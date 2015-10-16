@@ -89,6 +89,7 @@ let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,ruby-rails,ruby-rspec'
 let g:snipMate.scope_aliases['eruby'] = 'html'
+let g:snipMate.scope_aliases['eelixir'] = 'html'
 let g:snipMate.scope_aliases['javascript'] = 'javascript,javascript-jasmine,handlebars,angular'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -140,8 +141,13 @@ autocmd BufWritePre * call Preserve('%s/\v($\n\s*)+%$//e')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " USE A BAR-SHAPED CURSOR FOR INSERT MODE.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAKE SURE VIM RETURNS TO THE SAME LINE WHEN YOU REOPEN A FILE.
@@ -190,7 +196,7 @@ vnoremap <silent> ! :<c-u>set hls \| let @/=VSetSearch()<CR>
 " DISABLE STANDARD PLUGINS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:loaded_getscriptPlugin=1 " download latest version of vim scripts
-let g:loaded_netrwPlugin=1 " read and write files over a network
+" let g:loaded_netrwPlugin=1 " read and write files over a network
 let g:loaded_tarPlugin=1 " tar file explorer
 let g:loaded_2html_plugin=1 " convert to html
 let g:loaded_vimballPlugin=1 " create self-installing Vim-script
@@ -214,10 +220,6 @@ inoremap jk <esc>l
 " run current file
 autocmd FileType elixir nnoremap ,1 :w <enter> :!elixir %<cr>
 autocmd FileType ruby   nnoremap ,1 :w <enter> :!ruby %<cr>
-autocmd FileType ruby   nnoremap ,2 :w <enter> :!rspec %<cr>
-
-autocmd FileType ruby nnoremap <leader>tt :!rake test<cr>
-autocmd FileType elixir nnoremap <leader>tt :!mix test<cr>
 
 nnoremap j gj
 nnoremap k gk
@@ -250,13 +252,12 @@ vnoremap ,e :Eval<cr>
 nnoremap ,e :Eval<cr>
 
 " select entire buffer
-nnoremap ,a maggVG
+nnoremap <leader>a maggVG
 
 " duplicate selected text [b]ellow or [a]bove
 vnoremap ,cb y'>o<esc>p
 vnoremap ,ca y'<O<esc>P
 
-nnoremap ,t :vs ~/Dropbox/.todo<cr>
 inoremap <c-b> <left>
 inoremap <c-f> <right>
 
@@ -279,12 +280,6 @@ nnoremap ,r :!sh ~/.vim/custom-scripts/reload-chrome<cr> | redraw
 vnoremap <c-j> :m'>+1<cr>gv=gv
 vnoremap <c-k> :m-2<cr>gv=gv
 
-function! RunNearestTest()
-  execute "!rspec %:" . line('.')
-endfunction
-
-nnoremap <leader>rt :call RunNearestTest()<cr>
-
 " close tab
 nnoremap ,cc :tabc<cr>
 
@@ -296,3 +291,5 @@ nnoremap ,v <c-w>t<c-w>H
 
 " Copy github link to current line
 nnoremap ,b <S-v>:Gbrowse!<cr>
+
+let g:VimuxOrientation = "h"
