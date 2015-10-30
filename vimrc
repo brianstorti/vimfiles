@@ -90,6 +90,7 @@ let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,ruby-rails,ruby-rspec'
 let g:snipMate.scope_aliases['eruby'] = 'html'
 let g:snipMate.scope_aliases['eelixir'] = 'html'
+let g:snipMate.scope_aliases['haml'] = 'html'
 let g:snipMate.scope_aliases['javascript'] = 'javascript,javascript-jasmine,handlebars,angular'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
