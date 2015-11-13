@@ -16,7 +16,7 @@ Boost your productivity in four easy steps.
 
 Or, if you trust me, you can just run this command and you are good to go:
 ```
-curl -L https://github.com/brianstorti/vimfiles/raw/master/install.sh | sh
+curl -L https://github.com/brianstorti/vimfiles/raw/master/install.sh | bash
 ```
 
 
