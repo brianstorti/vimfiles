@@ -292,5 +292,6 @@ nnoremap ,v <c-w>t<c-w>H
 
 " Copy github link to current line
 nnoremap ,b <S-v>:Gbrowse!<cr>
+nnoremap <leader>to :vs ~/Dropbox/.todo<cr>
 
 let g:VimuxOrientation = "h"
