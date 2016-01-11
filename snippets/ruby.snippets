@@ -53,6 +53,10 @@ snippet minitest
 	class ${1:`Snippet_RubyClassNameFromFilename()`} < Minitest::Test
 		${0}
 	end
+snippet test
+	test "${1}" do
+		${0}
+	end
 snippet group
 	group :${1:development} do
 		${0}
