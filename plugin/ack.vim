@@ -16,7 +16,8 @@ let g:ackprg="ag --nogroup --nocolor --column --follow
               \ --ignore-dir='_site'
               \ --ignore-dir='generated'
               \ --ignore-dir='OisServer'
-              \ --ignore-dir='test_out'"
+              \ --ignore-dir='test_out'
+              \ --ignore-dir='elm-stuff'"
 
 let g:ackhighlight=1
 vnoremap ,as :<C-u>exec VisualAckSearch()<CR>
