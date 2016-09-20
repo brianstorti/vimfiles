@@ -11,6 +11,8 @@ let g:ctrlp_abbrev = {
             \ { 'pattern': '^v/', 'expanded': 'app/views/' },
             \ { 'pattern': '^h/', 'expanded': 'app/helpers/' },
             \ { 'pattern': '^se/', 'expanded': 'app/serializers/' },
+            \ { 'pattern': '^f/', 'expanded': 'test/fixtures/' },
+            \ { 'pattern': '^t/', 'expanded': 'test/' },
             \ { 'pattern': '^s/', 'expanded': 'spec/' }
             \ ]
             \ }
@@ -22,11 +24,13 @@ let g:ctrlp_custom_ignore = '\v(node_modules|
                                \generated|
                                \dist|
                                \\.class|
-                               \build|
                                \\.tmp|
                                \deps|
                                \\.git|
                                \\.beam|
+                               \\.beam|
+                               \priv/static|
+                               \elm-stuff|
                                \test_out)'
 
 nnoremap ,s :exec "CtrlPLine " . bufname('%')<CR>
