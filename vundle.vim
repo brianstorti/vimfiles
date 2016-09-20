@@ -25,18 +25,11 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'sunaku/vim-ruby-minitest'
-Bundle 'rizzatti/dash.vim'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'lambdatoast/elm.vim'
 Bundle 'janko-m/vim-test'
 Bundle 'benmills/vimux'
-
-" clojure
-Bundle 'tpope/vim-fireplace'
-Bundle 'tpope/vim-classpath'
-Bundle 'guns/vim-clojure-static'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'tpope/vim-leiningen'
+Bundle 'elixir-lang/vim-elixir'
 
 " snippets
 Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -45,6 +38,3 @@ Bundle 'garbas/vim-snipmate'
 
 " tmux
 Bundle 'jgdavey/tslime.vim'
-
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'kchmck/vim-coffee-script'
