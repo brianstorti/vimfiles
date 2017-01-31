@@ -49,6 +49,8 @@ snippet bye
 	require 'byebug'; byebug
 snippet minitest
 	require 'minitest/autorun'
+	require 'minitest/reporters'
+	Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(:color => true)]
 
 	class ${1:`Snippet_RubyClassNameFromFilename()`} < Minitest::Test
 		${0}
