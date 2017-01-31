@@ -65,7 +65,8 @@ autocmd FileType java set ai sw=4 sts=4 et
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
 
 " spell check markdown files
-autocmd FileType markdown,gitcommit setlocal spell
+" autocmd FileType markdown,gitcommit setlocal spell
+setlocal spell
 
 let &colorcolumn="80,".join(range(120,999),",")
 
@@ -221,6 +222,7 @@ inoremap jk <esc>l
 " run current file
 autocmd FileType elixir nnoremap ,1 :w <enter> :!elixir %<cr>
 autocmd FileType ruby   nnoremap ,1 :w <enter> :!ruby %<cr>
+autocmd FileType go     nnoremap ,1 :w <enter> :!go run %<cr>
 
 nnoremap j gj
 nnoremap k gk
