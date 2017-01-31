@@ -13,6 +13,7 @@ let g:ctrlp_abbrev = {
             \ { 'pattern': '^se/', 'expanded': 'app/serializers/' },
             \ { 'pattern': '^f/', 'expanded': 'test/fixtures/' },
             \ { 'pattern': '^t/', 'expanded': 'test/' },
+            \ { 'pattern': '^g/', 'expanded': 'app/models/graph/' },
             \ { 'pattern': '^s/', 'expanded': 'spec/' }
             \ ]
             \ }
