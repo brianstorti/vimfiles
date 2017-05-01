@@ -30,6 +30,7 @@ Bundle 'lambdatoast/elm.vim'
 Bundle 'janko-m/vim-test'
 Bundle 'benmills/vimux'
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'fatih/vim-go'
 
 " snippets
 Bundle 'MarcWeber/vim-addon-mw-utils'
