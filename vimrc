@@ -65,7 +65,7 @@ autocmd FileType java set ai sw=4 sts=4 et
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
 
 " spell check markdown files
-" autocmd FileType markdown,gitcommit setlocal spell
+autocmd FileType markdown,gitcommit set textwidth=80
 setlocal spell
 
 let &colorcolumn="80,".join(range(120,999),",")
@@ -272,6 +272,8 @@ inoremap '' ''<esc>i
 inoremap "" ""<esc>i
 inoremap `` ``<esc>i
 
+inoremap <c-k> []()<esc>F[a
+
 " finds duplicate words
 nnoremap ,fd /\(\<\w\+\>\)\_s*\1<cr>
 
@@ -295,5 +297,6 @@ nnoremap ,v <c-w>t<c-w>H
 " Copy github link to current line
 nnoremap ,b <S-v>:Gbrowse!<cr>
 nnoremap <leader>to :vs ~/Dropbox/.todo<cr>
+nnoremap ,as :vs ~/Dropbox/.alphasights-todo<cr>
 
 let g:VimuxOrientation = "h"
