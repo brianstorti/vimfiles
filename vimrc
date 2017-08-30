@@ -34,6 +34,7 @@ set showtabline=2 " always displays tabs
 set t_ti= t_te= " doesn't remove vim screen from the view when running external commands (:!ls)
 set completefunc=syntaxcomplete#Complete " specifies a function to be used for Insert mode completion with CTRL-X CTRL-U.
 set ruler " show line and column numbers in the status bar
+set lazyredraw " using relativenumbers/cursorline makes vim pagination (j/k) extremely slow. This helps a little bit.
 
 " Store temporary files in a central spot
 set backup
@@ -249,6 +250,7 @@ nnoremap ,db Orequire 'byebug'; byebug<esc>
 nnoremap <F4> :TagbarToggle<cr>
 nnoremap <C-]> g<C-]>
 nnoremap ,mt <c-w>T<cr> " move current buffer to its own tab
+nnoremap ,mb :sbp <bar> wincmd p <bar> wincmd T<cr> " split buffer and move it to a tab
 
 " eval clojure code
 vnoremap ,e :Eval<cr>
