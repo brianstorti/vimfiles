@@ -302,3 +302,4 @@ nnoremap <leader>to :vs ~/Dropbox/.todo<cr>
 nnoremap ,as :vs ~/Dropbox/.alphasights-todo<cr>
 
 let g:VimuxOrientation = "h"
+nnoremap ,ns :set nospell<cr>
