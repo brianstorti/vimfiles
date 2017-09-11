@@ -2,7 +2,7 @@
 
 function! FuzzyfinderCommand(vim_command)
   try
-    let selection = system("ag . --silent -l -g '' | fzy ")
+    let selection = system("ag . --silent --hidden -l -g '' | fzy ")
   catch /Vim:Interrupt/
     redraw!
     return
