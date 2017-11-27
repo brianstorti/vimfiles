@@ -35,6 +35,7 @@ set t_ti= t_te= " doesn't remove vim screen from the view when running external 
 set completefunc=syntaxcomplete#Complete " specifies a function to be used for Insert mode completion with CTRL-X CTRL-U.
 set ruler " show line and column numbers in the status bar
 set lazyredraw " using relativenumbers/cursorline makes vim pagination (j/k) extremely slow. This helps a little bit.
+set undofile " Maintain undo history between sessions
 
 " Store temporary files in a central spot
 set backup
@@ -67,7 +68,7 @@ autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
 
 " spell check markdown files
 autocmd FileType markdown,gitcommit set textwidth=80
-setlocal spell
+autocmd FileType markdown,gitcommit set spell
 
 let &colorcolumn="80,".join(range(120,999),",")
 
@@ -301,5 +302,17 @@ nnoremap ,b <S-v>:Gbrowse!<cr>
 nnoremap <leader>to :vs ~/Dropbox/.todo<cr>
 nnoremap ,as :vs ~/Dropbox/.alphasights-todo<cr>
 
+nnoremap ,ns :set spell!<cr>
+
 let g:VimuxOrientation = "h"
-nnoremap ,ns :set nospell<cr>
+
+function! VimuxSlime()
+  call VimuxSendText(@v)
+  call VimuxSendKeys("Enter")
+endfunction
+
+" run selected text with tmux
+vnoremap <LocalLeader>r "vy :call VimuxSlime()<CR>
+
+" run current line with tmux
+nnoremap <LocalLeader>rr V :call VimuxSlime()<CR>
